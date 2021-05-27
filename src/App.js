@@ -1,25 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import {Link, Route, Routes} from "react-router-dom";
+import {SideBarMenu} from './Components/Sidebar.js';
 
-function App() {
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" id="outer-container">
+    <SideBarMenu pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
+    <div id="page-wrap">
+      <h1> AstroVid </h1>
+      </div>
     </div>
   );
 }
 
-export default App;
+
