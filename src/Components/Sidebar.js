@@ -10,6 +10,7 @@ export function SideBarMenu() {
         <Link className="menu-item"  to="/videos"> Videos </Link>
         <Link className="menu-item"  to="/liked"> Liked </Link>
         <Link className="menu-item"  to="/playlist"> Playlist </Link>
+        <Link className="menu-item"  to="/history"> History </Link>
       </Sidebar>
     )
     }

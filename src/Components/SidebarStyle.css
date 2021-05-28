@@ -61,8 +61,13 @@
     color: #d1d1d1;
     margin-bottom: 10px;
     text-align: left;
+    padding: 1rem, 1rem;
     text-decoration: none;
     transition: color 0.2s;
+  }
+
+  .bm-item:hover {
+    color: black;
   }
   
   /* Styling of overlay */
