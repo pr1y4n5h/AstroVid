@@ -37,7 +37,6 @@ export default function App() {
     <div className="App" id="outer-container">
     <SideBarMenu pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
     <div id="page-wrap">
-    <h1> AstroVid </h1>
     <div className="movie-container"> 
     { movies.length > 0 &&
       movies.map(item => <Movie key={item.id} {...item} />)
