@@ -5,6 +5,7 @@ import './SidebarStyle.css';
 
 export function SideBarMenu() {
     return (
+      <div>
       <Sidebar>
         <Link className="menu-item"  to="/"> Home </Link>
         <Link className="menu-item"  to="/videos"> Videos </Link>
@@ -12,5 +13,6 @@ export function SideBarMenu() {
         <Link className="menu-item"  to="/playlist"> Playlist </Link>
         <Link className="menu-item"  to="/history"> History </Link>
       </Sidebar>
+      </div>
     )
     }

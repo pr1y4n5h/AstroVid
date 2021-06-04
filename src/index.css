@@ -40,6 +40,10 @@ code {
   max-width: 100%;
 }
 
+.movie:hover {
+  transform: scale(1.1);
+}
+
 .movie-container {
   display: flex;
   flex-wrap: wrap;
@@ -56,11 +60,18 @@ code {
   margin: 0;
 } 
 
+.movie-info span {
+  padding: 0.5em;
+  background-color: #22254b;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
 
 .movie-overview{
   position: absolute;
   padding: 1rem;
   background-color: #fff;
+  opacity: 0.85;
   color: #22254b;
   bottom: 0;
   left: 0;

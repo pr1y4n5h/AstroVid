@@ -6,12 +6,15 @@
   margin: 0;
 }
 
+.navbar {
+  display: flex;
+}
+
 .navigation {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   height: 18vh;
-  background-color: grey;
 }
 
 .navigation-content {
@@ -32,7 +35,7 @@
   transform: translateY(4px);
 }
 
-.videos-card-home {
+/* .videos-card-home {
   padding: 1rem;
   margin: 1rem 1rem;
   display: flex;
@@ -41,5 +44,5 @@
   border: none;
   width: 250px;
   box-shadow: black 2px 2px 5px;
-}
+} */
 
