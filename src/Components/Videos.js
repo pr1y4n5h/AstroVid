@@ -1,22 +1,24 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { thumbnail } from "../utils/thumbnail"
+import "./Videocard.css"
 
-const IMG_API = "https://image.tmdb.org/t/p/w1280";
-
-export function Movie({title, poster_path, overview, vote_average}) {
+export function Movie( { videos }) {
+    const { _id, name, category, credits } = videos;
     return (
-        <div className="movie">
-        <img src={IMG_API + poster_path} alt={title} />
-        <div className="movie-info">
-            <h3>{title}</h3>
-            {
-                vote_average >= 8 ? <span style={{color: "green"}}>{vote_average}</span> : vote_average >= 6 && vote_average < 8 ? <span style={{color: "orange"}}>{vote_average}</span> : <span style={{color: "red"}}>{vote_average}</span>
-            }
-            
+        <>
+        <Link to={`/${_id}`} className="link" >
+        <div className="videos">
+        <img src={`${thumbnail(_id)}`} alt={{name}} />
+        <div className="videos-title">
+        <p> {name} </p>
         </div>
-        <div className="movie-overview">
-            <h2>Overview</h2>
-            <p> {overview} </p>
+        <div className="videos-overview">
+        <h3> Credits : {credits}</h3>
+        <p> <em> Genre : {category} </em></p>
         </div>
         </div>
+        </Link>
+        </>
     )
 }

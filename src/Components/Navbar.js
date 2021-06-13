@@ -1,21 +1,22 @@
 import react from "react";
 import {Link } from "react-router-dom";
+import "../App.css"
 
 export function Navbar() {
 
     return(
         <div class="navbar">
-        <span style={{ margin: "1rem", fontSize: "3rem", fontWeight: "bolder" }}>
+        <span class="logo">
         AstroVID 🚀
       </span>
       <nav>
         <ul class="navigation">
           <li class="navigation-content">
-            <Link style={{ textDecoration: "none" }} to="/myaccount"> My account </Link>
+            <Link to="/myaccount" className="nav-link"> My account </Link>
           </li>
 
           <li class="navigation-content">
-            <Link style={{ textDecoration: "none" }} to="/signin"> Sign In </Link>
+            <Link to="/signin" className="nav-link"> Sign In </Link>
           </li>
 
         </ul>

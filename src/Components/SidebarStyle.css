@@ -9,12 +9,12 @@
   
   /* Color/shape of burger icon bars */
   .bm-burger-bars {
-    background: #373a47;
+    background: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
   }
   
   /* Color/shape of burger icon bars on hover*/
   .bm-burger-bars-hover {
-    background: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+    background: #efefef;
   }
   
   /* Position and sizing of clickable cross button */
@@ -39,14 +39,14 @@
   
   /* General sidebar styles */
   .bm-menu {
-    background: #373a47;
+
     padding: 2.5em 1.5em 0;
     font-size: 1.15em;
   }
   
   /* Morph shape necessary with bubble or elastic */
   .bm-morph-shape {
-    fill: #373a47;
+    fill: #22254B;
   }
   
   /* Wrapper for item list */

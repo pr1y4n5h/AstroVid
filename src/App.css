@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+
 .App {
   font-family: sans-serif;
 }
@@ -6,13 +9,34 @@
   margin: 0;
 }
 
-.navbar {
-  display: flex;
+.logo {
+  position: relative;
+  left: 80px;
+  margin: 1rem; 
+  font-size: 3rem; 
+  font-weight: bolder; 
+
 }
+
+.navbar {
+  background-color: #22254B;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: sticky;
+	top: 0;
+  z-index: 1;
+  border: 1px solid;
+}
+
+/* position: -webkit-sticky;
+	position: sticky;
+	top: 0; */
 
 .navigation {
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap;
   align-items: center;
   height: 18vh;
 }
@@ -23,7 +47,15 @@
   border-radius: 1rem 1rem;
 }
 
-.navigation-content:hover {
+.navigation-content > .nav-link {
+  text-decoration: none;
+  color: white;
+  border: 1px solid #efefef;
+  padding: 1rem 1rem;
+  margin: 1rem 1rem;
+}
+
+.nav-link:hover {
   background-color: #ff4e00;
   background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
   cursor: pointer;
@@ -31,18 +63,57 @@
   font-weight: bolder;
 }
 
-.navigation-content:active {
+.nav-link:active {
   transform: translateY(4px);
 }
 
-/* .videos-card-home {
-  padding: 1rem;
-  margin: 1rem 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: none;
-  width: 250px;
-  box-shadow: black 2px 2px 5px;
-} */
+.main-content {
+  position: relative;
+  padding: 2rem 2rem;
+  
+}
 
+
+
+  /* CSS for React Player Page */
+  .player-container {
+    margin: 0;
+    border: 1px solid;
+    height: 120vh;
+  }
+
+  .player {
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    height: 550px;
+    width: auto;
+    border: 1px solid;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+
+  }
+
+  .react-player {
+    border: 1px solid;
+    padding: 1rem;
+  }
+
+  .player-content {
+    padding: 1rem 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .player-heading p {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bolder;
+    font-size: 2rem;
+    margin: 1rem 1rem;
+  } 
+
+  .player-category p {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    margin: 1rem 1rem;
+  }
