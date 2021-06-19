@@ -7,7 +7,7 @@ export function Navbar() {
     return(
         <div class="navbar">
         <span class="logo">
-        AstroVID 🚀
+        AstroVids 🚀
       </span>
       <nav>
         <ul class="navigation">

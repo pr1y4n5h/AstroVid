@@ -42,6 +42,7 @@
 
     padding: 2.5em 1.5em 0;
     font-size: 1.15em;
+    
   }
   
   /* Morph shape necessary with bubble or elastic */
@@ -59,7 +60,7 @@
   .bm-item {
     display: inline-block;
     color: #d1d1d1;
-    margin-bottom: 10px;
+    margin: 2rem 2rem;
     text-align: left;
     padding: 1rem, 1rem;
     text-decoration: none;
@@ -67,7 +68,9 @@
   }
 
   .bm-item:hover {
+     cursor: pointer;
     color: black;
+    font-weight: bolder;  
   }
   
   /* Styling of overlay */

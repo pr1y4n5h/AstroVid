@@ -1,12 +1,8 @@
-import './App.css';
-import { Movie } from "./Components/Videos"
-import {useFetchVideos} from "./useFetchVideos";
-import {useVideosContext} from "./videos-context";
-import { MyLoader } from "./Components/Loader"
-
-
-
-// const FEATURED_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1"
+import '../App.css';
+import { Movie } from "../Components/Videos"
+import {useFetchVideos} from "../Hooks/useFetchVideos";
+import {useVideosContext} from "../Contexts/VideosContext";
+import { MyLoader } from "../Components/Loader"
 
 export function VideosPage() {
   // const [movies, setMovies] = useState([]);

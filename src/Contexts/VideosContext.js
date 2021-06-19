@@ -39,11 +39,9 @@ export function VideosProvider({ children }) {
     const [state, dispatchVideos] = useReducer(videosReducer, initialState);
   
     return (
-      <>
         <VideosContext.Provider value={{ ...state, dispatchVideos }}>
           {children}
         </VideosContext.Provider>
-      </>
     );
   }
 
