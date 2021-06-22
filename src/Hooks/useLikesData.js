@@ -11,7 +11,7 @@ export function useLikesData() {
         dispatchVideos({type: "SET_LOADER"});
 
         try {
-            const {status, data } = await axios.get(`https://astrovids-backend.pr1y4n5h.repl.co/likes/${likeId}`);
+            const { status, data } = await axios.get(`https://astrovids-backend.pr1y4n5h.repl.co/likes/${likeId}`);
 
             if(status === 200 && data.success === true) {
              dispatchLikes({ type: "ADD_TO_LIKES", payload: data.likeData.videos  })   

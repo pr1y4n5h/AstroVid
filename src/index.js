@@ -5,15 +5,18 @@ import App from './App';
 import {BrowserRouter as Router} from "react-router-dom";
 import {VideosProvider} from "./Contexts/VideosContext"
 import {LikesProvider} from "./Contexts/LikesContext"
+import {WatchlistProvider} from "./Contexts/WatchlistContext"
 
 ReactDOM.render(
   <React.StrictMode>
   <Router>
-  <LikesProvider>
   <VideosProvider>
+  <LikesProvider>
+  <WatchlistProvider>
     <App />
-    </VideosProvider>
+    </WatchlistProvider>
     </LikesProvider>
+    </VideosProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

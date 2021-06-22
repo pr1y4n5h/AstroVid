@@ -6,49 +6,68 @@ import {useReactPlayer} from "../Hooks/useReactPlayer";
 import {MyLoader} from "../Components/Loader";
 import "../App.css"
 import { useLikesContext } from "../Contexts/LikesContext";
+import {useWatchlistContext} from "../Contexts/WatchlistContext"
 import { addLikes } from "../api/addLikes";
 import { removeLikes } from "../api/removeLikes";
+import { addWatchlist } from "../api/Watchlist/addWatchlist";
+import {removeWatchlist } from "../api/Watchlist/removeWatchlist";
 
 import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
 import ThumbUpAltSharpIcon from '@material-ui/icons/ThumbUpAltSharp';
-
 import WatchLaterOutlinedIcon from '@material-ui/icons/WatchLaterOutlined';
 import WatchLaterSharpIcon from '@material-ui/icons/WatchLaterSharp';
-
 import PlaylistAddOutlinedIcon from '@material-ui/icons/PlaylistAddOutlined';
 import PlaylistAddCheckSharpIcon from '@material-ui/icons/PlaylistAddCheckSharp';
 
 
 export function Player() {
     const {loader, dispatchVideos} = useVideosContext();
-    const {dispatchLikes, likes, likeId} = useLikesContext();
+    const {likes, likeId, dispatchLikes} = useLikesContext();
     const { id } = useParams();
     const videoData = useReactPlayer(id);
-    // const [toggle, setToggle] = useState(false);
+    const {watchlist, watchlistId, dispatchWatchlist } = useWatchlistContext();
 
     function likeHandler(videoData) {
-        if(likes.some(item => item._id !== id)) {
+        
+        if(likes.some(item => item._id === id)) {
+
             addLikes(likeId, videoData, dispatchLikes)
+            alert("ADDED!")
         }
         else {
             removeLikes(likeId, videoData._id, dispatchLikes)
+            alert("Removed")
         }
     }
 
     function likeToggle(id) {
         if(likes.some(item => item._id === id)) {
-            return (
-                <ThumbUpAltSharpIcon />
-            )
+            return <ThumbUpAltSharpIcon />
         }
         else {
-         return (
-            <ThumbUpAltOutlinedIcon />
-         )       
+            return <ThumbUpAltOutlinedIcon />
         }
     }
 
-    
+    function watchlistHandler() {
+        if(watchlist.some(item => item._id === id )) {
+            removeWatchlist(watchlistId, videoData._id, dispatchWatchlist)
+            alert("Removed")
+        }
+        else {
+            addWatchlist(watchlistId, videoData, dispatchWatchlist)
+            alert("Added") 
+        }
+    }
+
+    function watchlistToggle(id) {
+       if(watchlist.some(item => item._id === id )) {
+        return <WatchLaterSharpIcon />
+       }
+       else {
+           return <WatchLaterOutlinedIcon />
+       }
+    }
 
     return (
         <div className="player-container">
@@ -79,7 +98,7 @@ export function Player() {
                      </p>
                  </li>
                  <li>
-                 <span> <WatchLaterOutlinedIcon /></span>
+                 <span onClick={() => watchlistHandler(videoData)} > {watchlistToggle(videoData._id)}</span>
                  <p>
                      Watch Later
                  </p>

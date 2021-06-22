@@ -6,6 +6,7 @@ import {SideBarMenu} from './Components/Sidebar.js';
 import {Navbar} from "./Components/Navbar"
 import { LikedVideos } from './Pages/LikedVideosPage';
 import { PlaylistVideos } from './Pages/PlaylistPage';
+import {WatchLater} from './Pages/WatchLaterPage'
 
 export default function App() {
 
@@ -19,6 +20,7 @@ export default function App() {
         <Route path=":id" element={<Player />} />
         <Route path="/liked" element={<LikedVideos />} />
         <Route path="/playlist" element={<PlaylistVideos />} />
+        <Route path="/watch-later" element={<WatchLater />} />
     </Routes>
     </main>
     </div>
