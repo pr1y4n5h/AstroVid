@@ -36,7 +36,7 @@ export function useWatchlistData() {
     }
 
     useEffect(() => {
-        if(watchlistId !== null && watchlist.length > 0) {
+        if(watchlistId !== null && watchlist.length === 0) {
             fetchData();
         }
     }, [watchlistId] )

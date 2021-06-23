@@ -1,5 +1,5 @@
 import ReactPlayer from "react-player";
-import {React, useState} from "react";
+import {React} from "react";
 import { useParams } from "react-router-dom";
 import {useVideosContext} from "../Contexts/VideosContext";
 import {useReactPlayer} from "../Hooks/useReactPlayer";
@@ -28,41 +28,40 @@ export function Player() {
     const {watchlist, watchlistId, dispatchWatchlist } = useWatchlistContext();
 
     function likeHandler(videoData) {
-        
-        if(likes.some(item => item._id === id)) {
 
-            addLikes(likeId, videoData, dispatchLikes)
-            alert("ADDED!")
+        if(likes.some(item => item._id === id)) {
+            removeLikes(likeId, videoData._id, dispatchLikes)
+            // alert("REMOVED")
         }
         else {
-            removeLikes(likeId, videoData._id, dispatchLikes)
-            alert("Removed")
+            addLikes(likeId, videoData, dispatchLikes)
+            // alert("ADDED!")
         }
     }
 
     function likeToggle(id) {
         if(likes.some(item => item._id === id)) {
-            return <ThumbUpAltSharpIcon />
+            return <ThumbUpAltSharpIcon style={{color: "#ff4e00"}} />
         }
         else {
             return <ThumbUpAltOutlinedIcon />
         }
     }
 
-    function watchlistHandler() {
+    function watchlistHandler(videoData) {
         if(watchlist.some(item => item._id === id )) {
             removeWatchlist(watchlistId, videoData._id, dispatchWatchlist)
-            alert("Removed")
+            // alert("Removed")
         }
         else {
             addWatchlist(watchlistId, videoData, dispatchWatchlist)
-            alert("Added") 
+            // alert("Added") 
         }
     }
 
     function watchlistToggle(id) {
        if(watchlist.some(item => item._id === id )) {
-        return <WatchLaterSharpIcon />
+        return <WatchLaterSharpIcon style={{color: "#ff4e00"}} />
        }
        else {
            return <WatchLaterOutlinedIcon />
@@ -70,13 +69,11 @@ export function Player() {
     }
 
     return (
-        <div className="player-container">
-
+        <>
         {loader && <MyLoader /> }
-
+        <div className="player-container">
         {videoData && (
             <>
-
             <div className="player">
             <div className="react-player-div">
             <ReactPlayer 
@@ -90,17 +87,16 @@ export function Player() {
             
             <div className="player-buttons" >
              <ul className="player-buttons-ul">
-                 <li>
+                 <li  >
                     <span onClick={() => likeHandler(videoData)}> {likeToggle(videoData._id)} </span>
                     <p>
-                     {/* {toggle ? `Liked` : `Like`} */}
-                     Like
+                     {likes.some(item => item._id === id) ? `Liked` : `Like`}
                      </p>
                  </li>
                  <li>
                  <span onClick={() => watchlistHandler(videoData)} > {watchlistToggle(videoData._id)}</span>
                  <p>
-                     Watch Later
+                 Watch Later
                  </p>
                  </li>
                  <li>
@@ -134,7 +130,10 @@ export function Player() {
 
             </>
         )}
+
+        <hr />
             
         </div>
+        </>
     )
 }

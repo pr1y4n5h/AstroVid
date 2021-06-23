@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
 
-
 .App {
   font-family: sans-serif;
 }
@@ -13,7 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 60vh;
 }
 
 .logo {
@@ -52,18 +51,20 @@
 
 .navigation-content > .nav-link {
   text-decoration: none;
-  color: white;
-  border: 1px solid #efefef;
+  border-color: #ff4e00;
+  border: 1px solid #ff4e00;
+  border-radius: 0.5rem;
+  color: #fff;
+  box-shadow: 0 0 40px 40px #ff4e00 inset, 0 0 0 0 #ff4e00;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
   padding: 1rem 1rem;
   margin: 1rem 1rem;
 }
 
 .nav-link:hover {
-  background-color: #ff4e00;
-  background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
   cursor: pointer;
-  color: black;
-  font-weight: bolder;
+  box-shadow: 0 0 10px 0 #ff4e00 inset, 0 0 10px 4px #ff4e00;
 }
 
 .nav-link:active {
@@ -73,7 +74,13 @@
 .main-content {
   position: relative;
   padding: 2rem 2rem;
-  
+}
+
+.videos-container {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid;
+  margin: 0;
 }
 
   /* CSS for React Player Page */
@@ -112,6 +119,10 @@
     cursor: pointer;
   }
 
+  /* .player-buttons-ul > li:hover {
+    background-color:#ff4e00;
+    color: #fff;
+  } */
 
   .player-content {
     padding: 0rem 1rem;

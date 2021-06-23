@@ -23,7 +23,6 @@ function watchlistReducer(state,action) {
                 watchlistId: action.payload
             }
 
-    
         default:
             return state;
     }

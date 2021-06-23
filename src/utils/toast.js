@@ -1,9 +1,10 @@
 import { toast } from "react-toastify";
 
-export const toastText = (text) => {
+export function toastText(text) {
   return toast.dark(text, {
-    position: toast.POSITION.BOTTOM_CENTER,
+    position: toast.POSITION.BOTTOM_RIGHT,
     autoClose: 1000,
     draggablePercent: 60,
   });
 };
+

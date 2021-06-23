@@ -37,9 +37,15 @@ export function VideosPage() {
   return (
     <div>    
     <div id="page-wrap">
-    <div className="videos-container"> 
+    
+
+
     {loader && <MyLoader />}
-    { filteredItems.map(item => <Movie key={item._id} videos={item} />)
+    
+    <div className="videos-container"> 
+    
+    { 
+      filteredItems.map(item => <Movie key={item._id} videos={item} />)
     }
     </div>
     </div>

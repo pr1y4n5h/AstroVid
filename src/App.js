@@ -6,7 +6,8 @@ import {SideBarMenu} from './Components/Sidebar.js';
 import {Navbar} from "./Components/Navbar"
 import { LikedVideos } from './Pages/LikedVideosPage';
 import { PlaylistVideos } from './Pages/PlaylistPage';
-import {WatchLater} from './Pages/WatchLaterPage'
+import {WatchLaterPage} from './Pages/WatchLaterPage'
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
 
@@ -20,8 +21,9 @@ export default function App() {
         <Route path=":id" element={<Player />} />
         <Route path="/liked" element={<LikedVideos />} />
         <Route path="/playlist" element={<PlaylistVideos />} />
-        <Route path="/watch-later" element={<WatchLater />} />
+        <Route path="/watch-later" element={<WatchLaterPage />} />
     </Routes>
+    <ToastContainer />
     </main>
     </div>
   );
