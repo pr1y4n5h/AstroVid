@@ -3,7 +3,7 @@ import {toastText } from "../utils/toast";
 
 export async function addLikes(likeId, videoData, dispatchLikes ) {
 
-    // const likeURL = likeId === null ? `https://astrovids-backend.pr1y4n5h.repl.co/likes` : `https://astrovids-backend.pr1y4n5h.repl.co/likes/${likeId}`;
+    const addLikesURL = (likeId === null) ? "https://astrovids-backend.pr1y4n5h.repl.co/likes" : `https://astrovids-backend.pr1y4n5h.repl.co/likes/${likeId}`;
 
     try {
         const {
@@ -14,19 +14,21 @@ export async function addLikes(likeId, videoData, dispatchLikes ) {
                 videos 
             } 
             }
-        } = await axios.post( likeId === null ? `https://astrovids-backend.pr1y4n5h.repl.co/likes` : `https://astrovids-backend.pr1y4n5h.repl.co/likes/${likeId}` , 
+        } = await axios.post( addLikesURL , 
         { 
             videos: videoData
         }
         );
 
         if(status === 201 && success === true) {
+            dispatchLikes({type: "ADD_TO_LIKES", payload: videos});
+            toastText("Added to Likes");
+            
             if(likeId === null) {
                 dispatchLikes({type: "SAVE_LIKE_ID", payload: like_id});
                 localStorage.setItem("likeid", JSON.stringify(like_id));
             } 
-                dispatchLikes({type: "ADD_TO_LIKES", payload: videos});
-                toastText("Added to Likes")
+            
         }
 
     } catch (err) {

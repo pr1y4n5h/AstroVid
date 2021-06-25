@@ -2,6 +2,9 @@ import axios from "axios";
 import { toastText } from "../../utils/toast";
 
 export async function addWatchlist(watchlistId, videoData, dispatchWatchlist) {
+
+    const addWatchlistURL = (watchlistId === null) ? "https://astrovids-backend.pr1y4n5h.repl.co/watchlist" : `https://astrovids-backend.pr1y4n5h.repl.co/watchlist/${watchlistId}`;
+
     try {
         const {
             status,
@@ -12,8 +15,7 @@ export async function addWatchlist(watchlistId, videoData, dispatchWatchlist) {
                     videos
                 } 
                 }
-        } = await axios.post(
-            watchlistId === null ? "https://astrovids-backend.pr1y4n5h.repl.co/watchlist" : `https://astrovids-backend.pr1y4n5h.repl.co/watchlist/${watchlistId}`, {
+        } = await axios.post( addWatchlistURL , {
                 videos: videoData
             }
         );
@@ -24,6 +26,7 @@ export async function addWatchlist(watchlistId, videoData, dispatchWatchlist) {
 
             if(watchlistId === null) {
                 dispatchWatchlist({type: "SAVE_WATCHLIST_ID", payload: watchlist_id})
+                localStorage.setItem("watchlistid", JSON.stringify(watchlist_id));
             }
         }
 

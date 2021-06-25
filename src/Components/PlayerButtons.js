@@ -17,11 +17,9 @@ export function LikeButton() {
 
         if(likes.some(item => item._id === id)) {
             removeLikes(likeId, videoData._id, dispatchLikes)
-            // alert("REMOVED")
         }
         else {
             addLikes(likeId, videoData, dispatchLikes)
-            // alert("ADDED!")
         }
     }
 

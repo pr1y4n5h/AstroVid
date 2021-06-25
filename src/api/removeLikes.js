@@ -1,7 +1,9 @@
 import axios from "axios";
-import {toastText } from "../utils/toast";
+import { toastText } from "../utils/toast";
 
 export async function removeLikes(likeId, videoId, dispatchLikes) {
+
+    const removeLikesURL = `https://astrovids-backend.pr1y4n5h.repl.co/likes/${likeId}/${videoId}` ;
     
     try {
         const { 
@@ -12,7 +14,7 @@ export async function removeLikes(likeId, videoId, dispatchLikes) {
                 { 
                     videos 
                 } 
-            } }= await axios.delete(`https://astrovids-backend.pr1y4n5h.repl.co/likes/${likeId}/${videoId}`);
+            } }= await axios.delete(removeLikesURL);
             
             if(status === 200 && success === true)
             { 
