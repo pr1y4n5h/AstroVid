@@ -14,7 +14,8 @@ export async function addLikes(likeId, videoData, dispatchLikes ) {
                 videos 
             } 
             }
-        } = await axios.post( likeId === null ? `https://astrovids-backend.pr1y4n5h.repl.co/likes` : `https://astrovids-backend.pr1y4n5h.repl.co/likes/${likeId}` , { 
+        } = await axios.post( likeId === null ? `https://astrovids-backend.pr1y4n5h.repl.co/likes` : `https://astrovids-backend.pr1y4n5h.repl.co/likes/${likeId}` , 
+        { 
             videos: videoData
         }
         );
@@ -22,7 +23,7 @@ export async function addLikes(likeId, videoData, dispatchLikes ) {
         if(status === 201 && success === true) {
             if(likeId === null) {
                 dispatchLikes({type: "SAVE_LIKE_ID", payload: like_id});
-                // localStorage.setItem("likeid", JSON.stringify(idOfLike));
+                localStorage.setItem("likeid", JSON.stringify(like_id));
             } 
                 dispatchLikes({type: "ADD_TO_LIKES", payload: videos});
                 toastText("Added to Likes")

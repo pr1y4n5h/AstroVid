@@ -24,7 +24,7 @@ function videosReducer(state, action) {
     
         default:
             return {
-          ...state,
+          ...state
         };
     }
 }

@@ -1,5 +1,5 @@
 import ReactPlayer from "react-player";
-import {React} from "react";
+import {React, useState} from "react";
 import { useParams } from "react-router-dom";
 import {useVideosContext} from "../Contexts/VideosContext";
 import {useReactPlayer} from "../Hooks/useReactPlayer";
@@ -26,6 +26,7 @@ export function Player() {
     const { id } = useParams();
     const videoData = useReactPlayer(id);
     const {watchlist, watchlistId, dispatchWatchlist } = useWatchlistContext();
+    const [toggle, setToggle] = useState(false);
 
     function likeHandler(videoData) {
 
@@ -80,7 +81,7 @@ export function Player() {
             controls
             className="react-player" 
             url = {`https://www.youtube.com/watch?v=${id}`} 
-            // playing = {true}
+            playing = {true}
             width = "100%"
             height ="100%" />
             </div>
@@ -91,6 +92,7 @@ export function Player() {
                     <span onClick={() => likeHandler(videoData)}> {likeToggle(videoData._id)} </span>
                     <p>
                      {likes.some(item => item._id === id) ? `Liked` : `Like`}
+                     
                      </p>
                  </li>
                  <li>
@@ -124,7 +126,8 @@ export function Player() {
              </div>
 
              <div className="player-description">
-            <p> Description : {videoData.description} </p>
+             <span onClick={() => setToggle(toggle => !toggle) } > {toggle ? "Show Less..." : "Show More..."} </span>
+            <p style={ !toggle ? {visibility: "hidden"} :{visibility: "visible"} }> Description : {videoData.description} </p>
              </div>
              </div>
 

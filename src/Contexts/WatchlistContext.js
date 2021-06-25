@@ -24,7 +24,7 @@ function watchlistReducer(state,action) {
             }
 
         default:
-            return state;
+            return {...state};
     }
 
 }

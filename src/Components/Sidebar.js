@@ -13,7 +13,7 @@ export function SideBarMenu() {
     return (
       <div>
       <Sidebar>
-        <Link className="menu-item"  to="/"> <div> {<HomeOutlinedIcon />} Home </div> </Link>
+        <Link className="menu-item"  to="/"> {<HomeOutlinedIcon />} Home </Link>
         <Link className="menu-item"  to="/liked"> {<ThumbUpAltOutlinedIcon />} Liked </Link>
         <Link className="menu-item"  to="/playlist"> {<PlaylistAddCheckOutlinedIcon />} Playlist </Link>
         <Link className="menu-item" to="/watch-later"> {<WatchLaterOutlinedIcon />}  Watch Later</Link>
