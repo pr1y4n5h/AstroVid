@@ -22,6 +22,7 @@ export async function addLikes(likeId, videoData, dispatchLikes ) {
 
         if(status === 201 && success === true) {
             dispatchLikes({type: "ADD_TO_LIKES", payload: videos});
+            console.log(videos)
             toastText("Added to Likes");
             
             if(likeId === null) {
