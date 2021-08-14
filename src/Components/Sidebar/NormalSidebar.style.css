@@ -1,0 +1,25 @@
+.sidebar-aside {
+    width: 20%;
+    height: 86vh;
+    padding: 2rem 1.5rem;
+    position: sticky;
+    top: 100px;
+    background: #121212
+}
+
+.sidebar-aside-ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    height: 60vh;
+    justify-content: space-evenly; 
+}
+
+.sidebar-link {
+    text-decoration: none;
+    text-align: center;
+    margin-left: -2.5rem;
+    color: #fff;
+    padding: 1rem;
+}
+

@@ -1,0 +1,53 @@
+.logo {
+  position: relative;
+  left: 80px;
+  margin: 1rem;
+  font-size: 2rem;
+  font-family: "Rubik", sans-serif;
+}
+
+.navbar {
+  background: #121212;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-btns {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-btn {
+  text-decoration: none;
+  padding: 1rem 1rem;
+  margin: 1rem 1rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .logo {
+    position: relative;
+    left: 25px;
+    top: 15px;
+    margin: 0;
+    font-size: 1.3rem;
+  }
+
+  .nav-btn {
+    text-decoration: none;
+    padding: 0;
+    margin-right: 0.5rem;
+  }
+}

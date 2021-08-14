@@ -11,8 +11,6 @@ export function LikedVideosPage() {
     const { loader } = useVideosContext();
     const { likes } = useLikesContext();
 
-    
-
     useLikesData();
     useLocalStorage()
 

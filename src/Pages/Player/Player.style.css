@@ -1,0 +1,74 @@
+/* CSS for React Player Page */
+.player-container {
+  padding: 1.5rem 1.5rem;
+}
+
+.player {
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid;
+}
+
+.react-player-div {
+  width: 100%;
+  height: 550px;
+}
+
+.player-buttons {
+  display: flex;
+  justify-content: flex-end;
+  border: 1px solid;
+}
+
+.player-buttons-ul {
+  display: flex;
+}
+
+.player-buttons-ul > li {
+  display: inline;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.player-buttons-ul > li:active {
+  box-shadow: inset 5px 0 5px -5px orange;
+  color: #fff;
+}
+
+.player-content {
+  padding: 0rem 1rem;
+  font-family: "Raleway", sans-serif;
+}
+
+.player-heading p {
+  font-weight: bolder;
+  font-size: 2rem;
+  margin: 1rem 1rem;
+}
+
+.player-category p {
+  margin: 1rem 1rem;
+  font-style: oblique;
+}
+
+.player-description {
+  margin: 2rem 1rem;
+  font-family: "Raleway", sans-serif;
+}
+
+.player-description span {
+  margin: 1rem 1rem;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.player-description p {
+  margin: 1rem 1rem;
+}
+
+.player-description span:hover {
+  color: #ff4e00;
+}
+
+.player-credits p {
+  margin: 1rem 1rem;
+}

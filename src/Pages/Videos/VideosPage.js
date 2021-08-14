@@ -1,12 +1,12 @@
-import '../App.css';
-import { Movie } from "../Components/Videos"
-import {useFetchVideos} from "../Hooks/useFetchVideos";
-import {useVideosContext} from "../Contexts/VideosContext";
-import { MyLoader } from "../Components/Loader"
+import "./VideosPage.style.css";
+import { VideoCard } from "../../Components/Videos";
+import { useFetchVideos } from "../../Hooks/useFetchVideos";
+import { useVideosContext } from "../../Contexts/VideosContext";
+import { MyLoader } from "../../Components/Loader";
 
 export function VideosPage() {
   // const [movies, setMovies] = useState([]);
-  
+
   // useEffect(() => {
   //   (async function () {
   //     try {
@@ -21,7 +21,7 @@ export function VideosPage() {
   //   }, []);
 
   useFetchVideos();
-  
+
   const { videos, videoFilter, loader } = useVideosContext();
 
   const filterByCategory = (videos, videofilter) => {
@@ -33,22 +33,15 @@ export function VideosPage() {
   };
 
   const filteredItems = filterByCategory(videos, videoFilter);
-  
+
   return (
-    <div>    
-    <div id="page-wrap">
-    
-
-
-    {loader && <MyLoader />}
-    
-    <div className="videos-container"> 
-    
-    { 
-      filteredItems.map(item => <Movie key={item._id} videos={item} />)
-    }
-    </div>
-    </div>
+    <div>
+        {loader && <MyLoader />}
+        <div className="videos-container">
+          {filteredItems.map((item) => (
+            <VideoCard key={item._id} videos={item} />
+          ))}
+        </div>
     </div>
   );
 }
