@@ -10,12 +10,6 @@ function videosReducer(state, action) {
         videos: action.payload,
       };
 
-    case "VIDEO_FILTER":
-      return {
-        ...state,
-        videoFilter: action.payload,
-      };
-
     case "SET_LOADER":
       return {
         ...state,
@@ -31,7 +25,6 @@ function videosReducer(state, action) {
 
 const initialState = {
   videos: [],
-  videoFilter: "all",
   loader: false,
 };
 

@@ -16,28 +16,28 @@ export function NormalSideBarMenu() {
             className="sidebar-link"
             to="/"
             end
-            activeStyle={{ color: "#ff4e00" }}
+            activeStyle={{ background: "#ff4e00" }}
           >
             <li>{<HomeOutlinedIcon />} Home </li>
           </NavLink>
           <NavLink
             className="sidebar-link"
             to="/liked"
-            activeStyle={{ color: "#ff4e00" }}
+            activeStyle={{ background: "#ff4e00" }}
           >
             <li>{<ThumbUpAltOutlinedIcon />} Liked </li>
           </NavLink>
           <NavLink
             className="sidebar-link"
             to="/playlist"
-            activeStyle={{ color: "#ff4e00" }}
+            activeStyle={{ background: "#ff4e00" }}
           >
             <li>{<PlaylistAddCheckOutlinedIcon />} Playlist </li>
           </NavLink>
           <NavLink
             className="sidebar-link"
             to="/watch-later"
-            activeStyle={{ color: "#ff4e00" }}
+            activeStyle={{ background: "#ff4e00" }}
           >
             <li>{<WatchLaterOutlinedIcon />} Watch Later </li>
           </NavLink>

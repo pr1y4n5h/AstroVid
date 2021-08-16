@@ -2,7 +2,7 @@ import '../App.css';
 import { useWatchlistContext } from "../Contexts/WatchlistContext";
 import { useWatchlistData } from "../Hooks/useWatchlistData"
 import {useVideosContext} from "../Contexts/VideosContext";
-import { MyLoader } from "../Components/Loader";
+import { MyLoader } from "../Components/Loader/Loader";
 import {WatchLater} from "../Components/WatchLater";
 import {useLocalStorage} from "../useLocalStorage"
 

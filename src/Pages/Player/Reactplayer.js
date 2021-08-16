@@ -1,9 +1,9 @@
 import ReactPlayer from "react-player";
-import { React, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useVideosContext } from "../../Contexts/VideosContext";
 import { useReactPlayer } from "../../Hooks/useReactPlayer";
-import { MyLoader } from "../../Components/Loader";
+import { MyLoader } from "../../Components/Loader/Loader";
 import "./Player.style.css";
 import { useLikesContext } from "../../Contexts/LikesContext";
 import { useWatchlistContext } from "../../Contexts/WatchlistContext";
@@ -18,23 +18,31 @@ import WatchLaterOutlinedIcon from "@material-ui/icons/WatchLaterOutlined";
 import WatchLaterSharpIcon from "@material-ui/icons/WatchLaterSharp";
 import PlaylistAddOutlinedIcon from "@material-ui/icons/PlaylistAddOutlined";
 import PlaylistAddCheckSharpIcon from "@material-ui/icons/PlaylistAddCheckSharp";
+import { useAuth } from "../../Contexts/AuthContext";
 
 export function Player() {
   const { loader, dispatchVideos } = useVideosContext();
-  const { likes, likeId, dispatchLikes } = useLikesContext();
+  const { likes, dispatchLikes } = useLikesContext();
   const { id } = useParams();
   const videoData = useReactPlayer(id);
   const { watchlist, watchlistId, dispatchWatchlist } = useWatchlistContext();
   const [toggle, setToggle] = useState(false);
+  const {token} = useAuth();
 
   function likeHandler(videoData) {
-    if (likes.some((item) => item._id === id)) {
-      removeLikes(likeId, videoData._id, dispatchLikes);
-      // alert("REMOVED")
-    } else {
-      addLikes(likeId, videoData, dispatchLikes);
-      // alert("ADDED!")
+    if(token) {
+      if (likes.some((item) => item._id === id)) {
+        removeLikes(videoData._id, dispatchLikes, token);
+        alert("REMOVED")
+      } else {
+        addLikes(videoData, dispatchLikes, token);
+        alert("ADDED!")
+      }
     }
+    else {
+      alert("Please Login")
+    }
+      
   }
 
   function likeToggle(id) {
@@ -62,6 +70,8 @@ export function Player() {
       return <WatchLaterOutlinedIcon />;
     }
   }
+
+  console.log(likes)
 
   return (
     <>

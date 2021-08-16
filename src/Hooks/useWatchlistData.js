@@ -2,10 +2,13 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useWatchlistContext } from "../Contexts/WatchlistContext";
 import { useVideosContext } from "../Contexts/VideosContext";
+import { useAuth } from "../Contexts/AuthContext";
 
 export function useWatchlistData() {
   const { dispatchVideos } = useVideosContext();
   const { dispatchWatchlist, watchlist, watchlistId } = useWatchlistContext();
+
+  const {token} = useAuth();
 
   async function fetchData() {
     dispatchVideos("SET_LOADER");

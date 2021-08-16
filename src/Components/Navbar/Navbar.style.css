@@ -30,6 +30,14 @@
   cursor: pointer;
 }
 
+.mobile-menu-icon {
+  display: none;
+}
+
+.nav-menu {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   .navbar {
     height: 80px;
@@ -49,5 +57,34 @@
     text-decoration: none;
     padding: 0;
     margin-right: 0.5rem;
+  }
+
+  .nav-links-mobile {
+    position: absolute;
+    display: block;
+    list-style: none;
+    background-color: var(--dark-color);
+    left: 0;
+    top: 85px;
+    transition: all 1s ease-out;
+    width: 100%;
+    align-items: center;
+  }
+
+  .mobile-menu-icon {
+    display: block;
+    position: absolute;
+    font-size: 1.5rem;
+    color: white;
+    background-color: var(--dark-color);
+    border: none;
+    outline: none;
+    top: 1.5rem;
+    left: 1rem;
+    border: 1px solid white;
+  }
+
+  .nav-menu {
+    display: none;
   }
 }

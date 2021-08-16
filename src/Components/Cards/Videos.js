@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { thumbnail } from "../utils/thumbnail";
-import "./Videocard.css";
+import { thumbnail } from "../../utils/thumbnail";
+import "./Cards.style.css";
 
 export function VideoCard({ videos }) {
   const { _id, name, category, credits } = videos;

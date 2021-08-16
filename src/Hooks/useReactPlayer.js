@@ -17,7 +17,7 @@ export function useReactPlayer(videoId) {
         setVideos(data.videoData);
       }
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
     } finally {
       dispatchVideos({ type: "SET_LOADER" });
     }

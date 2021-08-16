@@ -1,7 +1,7 @@
 .sidebar-aside {
     width: 20%;
     height: 86vh;
-    padding: 2rem 1.5rem;
+    padding-top: 1.5rem;
     position: sticky;
     top: 100px;
     background: #121212
@@ -23,3 +23,8 @@
     padding: 1rem;
 }
 
+@media (max-width: 800px) {
+    .sidebar-aside {
+        display: none;
+    }
+}

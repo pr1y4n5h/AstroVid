@@ -1,17 +1,15 @@
 import axios from "axios";
 import { toastFailText } from "../../Components/toast";
 
-export async function removeWatchlist(watchlistId, videoId, dispatchWatchlist) {
-  const removeWatchlistURL = `https://astrovids-backend.pr1y4n5h.repl.co/watchlist/${watchlistId}/${videoId}`;
+export async function removeWatchlist(videoId, dispatchWatchlist, token) {
 
   try {
     const {
       status,
       data: {
         success,
-        watchlistData: { _id: watchlist_id },
-      },
-    } = await axios.delete(removeWatchlistURL);
+      }
+    } = await axios.delete(`https://AstroVids-Backend.pr1y4n5h.repl.co/watchlater/${videoId}`, { headers: { authorization: token } });
 
     if (status === 200 && success === true) {
       dispatchWatchlist({ type: "REMOVE_FROM_WATCHLIST", payload: videoId });

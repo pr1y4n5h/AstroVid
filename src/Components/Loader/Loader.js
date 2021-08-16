@@ -1,5 +1,5 @@
 import Loader from "react-loader-spinner";
-import "../App.css"
+import "./Loader.style.css"
 
 export function MyLoader() {
 

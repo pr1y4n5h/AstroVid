@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
+import {useLikesData} from "../Hooks/useLikesData"
 
 export const LikesContext = createContext();
 
@@ -29,11 +30,11 @@ function likesReducer(state, action) {
 
 const initialState = {
   likes: [],
-  likeId: null,
 };
 
 export function LikesProvider({ children }) {
   const [state, dispatchLikes] = useReducer(likesReducer, initialState);
+
 
   return (
     <LikesContext.Provider value={{ ...state, dispatchLikes }}>
