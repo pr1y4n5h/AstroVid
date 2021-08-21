@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { thumbnail } from "../utils/thumbnail"
-import "./Videocard.css";
-import { useWatchlistContext } from "../Contexts/WatchlistContext";
+import { thumbnail } from "../../utils/thumbnail"
+import "./Cards.style.css";
+import { useWatchlistContext } from "../../Contexts/WatchlistContext";
 import DeleteIcon from '@material-ui/icons/Delete';
 import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
-import {removeWatchlist} from "../api/Watchlist/removeWatchlist";
+import {removeWatchlist} from "../../api/Watchlist/removeWatchlist";
 
 export function WatchLater( { watchlaterData }) {
     const { _id, name, category, credits } = watchlaterData;

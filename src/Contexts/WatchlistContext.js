@@ -18,10 +18,10 @@ function watchlistReducer(state, action) {
         ),
       };
 
-    case "SAVE_WATCHLIST_ID":
+    case "CLEAR_WATCHLIST":
       return {
         ...state,
-        watchlistId: action.payload,
+        watchlist: []
       };
 
     default:
@@ -30,7 +30,6 @@ function watchlistReducer(state, action) {
 }
 
 const initialState = {
-  watchlistId: null,
   watchlist: [],
 };
 

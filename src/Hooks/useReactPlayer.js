@@ -25,7 +25,6 @@ export function useReactPlayer(videoId) {
 
   useEffect(() => {
     fetchData();
-    window.scrollTo(0, 0);
   }, [videoId]);
 
   return videos;

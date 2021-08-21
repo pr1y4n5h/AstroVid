@@ -11,7 +11,7 @@ export function setUpAuthExceptionHandler(logOut, navigate) {
       (response) => response,
       (error) => {
           if(error?.response?.status === UNAUTHORIZED) {
-              console.log("Running");
+              
               logOut();
               navigate("/login");
           }

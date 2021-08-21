@@ -17,10 +17,10 @@ function likesReducer(state, action) {
         likes: state.likes.filter((item) => item._id !== action.payload),
       };
 
-    case "SAVE_LIKE_ID":
+    case "CLEAR_LIKES":
       return {
         ...state,
-        likeId: action.payload,
+        likes: []
       };
 
     default:

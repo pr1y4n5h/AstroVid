@@ -6,20 +6,22 @@ import { useLikesContext } from "../../Contexts/LikesContext";
 import DeleteIcon from "@material-ui/icons/Delete";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
 import { removeLikes } from "../../api/Likes/removeLikes";
+import { useAuth } from "../../Contexts/AuthContext";
 
 export function Likes({ likesData }) {
-  const { _id, name, category, credits } = likesData;
-  const { dispatchLikes, likeId } = useLikesContext();
+  const { _id: videoID , name, category, credits } = likesData;
+  const { dispatchLikes } = useLikesContext();
+  const {token} = useAuth();
 
   return (
     <>
       <div className="videos">
-        <img src={`${thumbnail(_id)}`} alt={{ name }} />
+        <img src={`${thumbnail(videoID)}`} alt={{ name }} />
         <span
           className="delete-icon"
-          onClick={() => removeLikes(likeId, _id, dispatchLikes)}
+          onClick={() => removeLikes(videoID, dispatchLikes, token)}
         >
-          <DeleteIcon style={{ color: "#ff0000" }} />{" "}
+          <DeleteIcon style={{ color: "#ff0000" }} />
         </span>
         <div className="videos-title">
           <p> {name} </p>
@@ -30,7 +32,7 @@ export function Likes({ likesData }) {
             <em> Genre : {category} </em>
           </p>
           <div className="play-btn-div">
-            <Link to={`/${_id}`} className="play-btn">
+            <Link to={`/${videoID}`} className="play-btn">
               Play now <PlayCircleFilledWhiteIcon />
             </Link>
           </div>

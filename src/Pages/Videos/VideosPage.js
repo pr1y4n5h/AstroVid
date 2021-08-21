@@ -10,6 +10,8 @@ export function VideosPage() {
 
   const { videos, loader } = useVideosContext();
 
+  // console.log(videos)
+
   return (
     <div>
         {loader && <MyLoader />}

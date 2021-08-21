@@ -7,16 +7,20 @@ import { NormalSideBarMenu } from "./Components/Sidebar/NormalSidebar";
 import { Navbar } from "./Components/Navbar/Navbar";
 import { LikedVideosPage } from "./Pages/LikedVideos/LikedVideosPage";
 import { PlaylistVideos } from "./Pages/PlaylistPage";
-import { WatchLaterPage } from "./Pages/WatchLaterPage";
+import { WatchLaterPage } from "./Pages/WatchLater/WatchLaterPage";
 import { ToastContainer } from "react-toastify";
 import { ErrorPage } from "./Pages/ErrorPage";
 import { Signup } from "./Pages/Signup/Signup"
 import { Login } from "./Pages/Login/Login"
 import { useLikesData } from "./Hooks/useLikesData";
+import { useWatchLaterData } from "./Hooks/useWatchLaterData";
+import {usePlaylistData } from "./Hooks/usePlaylistData";
 
 export default function App() {
-   
+  
   useLikesData();
+  useWatchLaterData();
+  usePlaylistData();
 
   return (
     <div className="App">

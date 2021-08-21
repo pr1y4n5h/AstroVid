@@ -4,14 +4,14 @@ import { useWatchlistContext } from "../Contexts/WatchlistContext";
 import { useVideosContext } from "../Contexts/VideosContext";
 import { useAuth } from "../Contexts/AuthContext";
 
-export function useWatchlistData() {
+export function useWatchLaterData() {
   const { dispatchVideos } = useVideosContext();
-  const { dispatchWatchlist, watchlist, watchlistId } = useWatchlistContext();
+  const { dispatchWatchlist, watchlist } = useWatchlistContext();
 
-  const {token} = useAuth();
+  const { token } = useAuth();
 
   async function fetchData() {
-    dispatchVideos("SET_LOADER");
+    dispatchVideos({ type: "SET_LOADER" });
     try {
       const {
         status,
@@ -20,7 +20,8 @@ export function useWatchlistData() {
           success,
         },
       } = await axios.get(
-        `https://astrovids-backend.pr1y4n5h.repl.co/watchlist/${watchlistId}`
+        `https://astrovids-backend.pr1y4n5h.repl.co/watchlater/`,
+        { headers: { authorization: token } }
       );
 
       if (success === true && status === 200) {
@@ -37,8 +38,8 @@ export function useWatchlistData() {
   }
 
   useEffect(() => {
-    if (watchlistId !== null && watchlist.length === 0) {
+    if (token && watchlist.length === 0) {
       fetchData();
     }
-  }, [watchlistId]);
+  }, [token]);
 }

@@ -7,17 +7,20 @@ import { VideosProvider } from "./Contexts/VideosContext";
 import { LikesProvider } from "./Contexts/LikesContext";
 import { WatchlistProvider } from "./Contexts/WatchlistContext";
 import { AuthProvider } from "./Contexts/AuthContext";
+import { PlaylistProvider } from "./Contexts/PlaylistContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
         <VideosProvider>
-          <LikesProvider>
-            <WatchlistProvider>
-              <App />
-            </WatchlistProvider>
-          </LikesProvider>
+          <PlaylistProvider>
+            <LikesProvider>
+              <WatchlistProvider>
+                <App />
+              </WatchlistProvider>
+            </LikesProvider>
+          </PlaylistProvider>
         </VideosProvider>
       </AuthProvider>
     </Router>

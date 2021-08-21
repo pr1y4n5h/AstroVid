@@ -19,10 +19,13 @@ import WatchLaterSharpIcon from "@material-ui/icons/WatchLaterSharp";
 import PlaylistAddOutlinedIcon from "@material-ui/icons/PlaylistAddOutlined";
 import PlaylistAddCheckSharpIcon from "@material-ui/icons/PlaylistAddCheckSharp";
 import { useAuth } from "../../Contexts/AuthContext";
+import {PlaylistModal} from "../../Components/Playlist/PlaylistModal"
+import { usePlaylist } from "../../Contexts/PlaylistContext";
 
 export function Player() {
   const { loader, dispatchVideos } = useVideosContext();
   const { likes, dispatchLikes } = useLikesContext();
+  const {playlist, dispatchPlaylist} = usePlaylist();
   const { id } = useParams();
   const videoData = useReactPlayer(id);
   const { watchlist, watchlistId, dispatchWatchlist } = useWatchlistContext();
@@ -33,10 +36,8 @@ export function Player() {
     if(token) {
       if (likes.some((item) => item._id === id)) {
         removeLikes(videoData._id, dispatchLikes, token);
-        alert("REMOVED")
       } else {
         addLikes(videoData, dispatchLikes, token);
-        alert("ADDED!")
       }
     }
     else {
@@ -53,17 +54,22 @@ export function Player() {
     }
   }
 
-  function watchlistHandler(videoData) {
+
+
+  function watchLaterHandler(videoData) {
+    if(token) {
     if (watchlist.some((item) => item._id === id)) {
-      removeWatchlist(watchlistId, videoData._id, dispatchWatchlist);
-      // alert("Removed")
+      removeWatchlist(videoData._id, dispatchWatchlist, token);
     } else {
-      addWatchlist(watchlistId, videoData, dispatchWatchlist);
-      // alert("Added")
+      addWatchlist(videoData, dispatchWatchlist, token);
     }
   }
+  else {
+    alert("Please Login")
+  }
+  }
 
-  function watchlistToggle(id) {
+  function watchLaterToggle(id) {
     if (watchlist.some((item) => item._id === id)) {
       return <WatchLaterSharpIcon style={{ color: "#ff4e00" }} />;
     } else {
@@ -71,7 +77,18 @@ export function Player() {
     }
   }
 
-  console.log(likes)
+
+  function playlistHandler(){
+    if(token) {
+      dispatchPlaylist({type: "SHOW_PLAYLIST", payload: videoData})
+    }
+    else {
+      alert("Please Login")
+    }
+
+  }
+
+  console.log(playlist)
 
   return (
     <>
@@ -102,12 +119,12 @@ export function Player() {
                     </p>
                   </li>
                   <li>
-                    <span onClick={() => watchlistHandler(videoData)}>
-                      {watchlistToggle(videoData._id)}
+                    <span onClick={() => watchLaterHandler(videoData)}>
+                      {watchLaterToggle(videoData._id)}
                     </span>
                     <p>Watch Later</p>
                   </li>
-                  <li>
+                  <li onClick={playlistHandler} >
                     <span>
                       <PlaylistAddOutlinedIcon />
                     </span>
@@ -115,6 +132,7 @@ export function Player() {
                   </li>
                 </ul>
               </div>
+              <PlaylistModal />
             </div>
 
             <div className="player-content">

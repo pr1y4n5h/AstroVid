@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useAuth } from "../Contexts/AuthContext";
-import { useLikesContext } from "../Contexts/LikesContext";
+import { usePlaylist } from "../Contexts/PlaylistContext";
 import { useVideosContext } from "../Contexts/VideosContext";
 
-export function useLikesData() {
-  const { dispatchLikes, likes } = useLikesContext();
+export function usePlaylistData() {
+  const { dispatchPlaylist, playlist } = usePlaylist();
   const { dispatchVideos } = useVideosContext();
   const { token } = useAuth();
 
@@ -14,12 +14,12 @@ export function useLikesData() {
 
     try {
       const { status, data } = await axios.get(
-        `https://astrovids-backend.pr1y4n5h.repl.co/likes/`,
+        `https://astrovids-backend.pr1y4n5h.repl.co/playlists/`,
         { headers: { authorization: token } }
       );
 
       if (status === 200 && data.success === true) {
-        dispatchLikes({ type: "ADD_TO_LIKES", payload: data.likeData.videos });
+        dispatchPlaylist({ type: "ADD_TO_PLAYLIST", payload: data.playlistData.playlist });
       }
     } catch (err) {
       console.log(err);
@@ -29,7 +29,7 @@ export function useLikesData() {
   }
 
   useEffect(() => {
-    if (likes.length === 0 && token) {
+    if (playlist.length === 0 && token) {
       fetchData();
     }
   }, [token]);
