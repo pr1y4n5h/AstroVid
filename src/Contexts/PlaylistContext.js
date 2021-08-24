@@ -13,7 +13,7 @@ export function playlistReducer(state, action) {
           videoData:
             action.payload === undefined ? "" : action.payload,
         },
-      };
+      }; 
 
     case "DISPLAY_INPUT":
       return {

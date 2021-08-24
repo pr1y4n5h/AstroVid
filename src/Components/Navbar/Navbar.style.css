@@ -47,25 +47,27 @@
 
   .logo {
     position: relative;
-    left: 25px;
+    left: 45px;
     top: 15px;
     margin: 0;
-    font-size: 1.3rem;
+    font-size: 2rem;
   }
 
   .nav-btn {
     text-decoration: none;
     padding: 0;
+    color: #fff;
     margin-right: 0.5rem;
+    text-align: center;
   }
 
   .nav-links-mobile {
     position: absolute;
     display: block;
     list-style: none;
-    background-color: var(--dark-color);
+    background-color: #121212;
     left: 0;
-    top: 85px;
+    top: 75px;
     transition: all 1s ease-out;
     width: 100%;
     align-items: center;

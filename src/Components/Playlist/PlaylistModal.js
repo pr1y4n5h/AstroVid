@@ -17,7 +17,6 @@ export const PlaylistModal = () => {
     if(e.key === "Enter")
     createPlaylistHandler();
 }
-
   async function createPlaylistHandler() {
     dispatchPlaylist({ type: "DISPLAY_INPUT" });
     if (text) {
@@ -47,14 +46,11 @@ export const PlaylistModal = () => {
       );
   };
 
-  
-
-    console.log(playlist)
-
   return (
     <div
       className={`modal ${playlistModal.status ? "show-modal" : "hide-modal" }`}
     >
+    
       <div
         className="close-btn"
         onClick={() => dispatchPlaylist({ type: "SHOW_PLAYLIST" })}

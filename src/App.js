@@ -6,7 +6,7 @@ import { SideBarMenu } from "./Components/Sidebar.js";
 import { NormalSideBarMenu } from "./Components/Sidebar/NormalSidebar";
 import { Navbar } from "./Components/Navbar/Navbar";
 import { LikedVideosPage } from "./Pages/LikedVideos/LikedVideosPage";
-import { PlaylistVideos } from "./Pages/PlaylistPage";
+import { PlaylistPage } from "./Pages/Playlist/PlaylistPage";
 import { WatchLaterPage } from "./Pages/WatchLater/WatchLaterPage";
 import { ToastContainer } from "react-toastify";
 import { ErrorPage } from "./Pages/ErrorPage";
@@ -15,6 +15,8 @@ import { Login } from "./Pages/Login/Login"
 import { useLikesData } from "./Hooks/useLikesData";
 import { useWatchLaterData } from "./Hooks/useWatchLaterData";
 import {usePlaylistData } from "./Hooks/usePlaylistData";
+import {PlaylistVideos} from "./Pages/Playlist/PlaylistVideos"
+import {PrivateRoute} from "./PrivateRoute";
 
 export default function App() {
   
@@ -33,9 +35,10 @@ export default function App() {
             <Route path=":id" element={<Player />} />
             <Route path="/sign-up" element={<Signup />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/liked" element={<LikedVideosPage />} />
-            <Route path="/playlist" element={<PlaylistVideos />} />
-            <Route path="/watch-later" element={<WatchLaterPage />} />
+            <PrivateRoute path="/liked" element={<LikedVideosPage />} />
+            <PrivateRoute path="/playlist" element={<PlaylistPage />} />
+            <PrivateRoute path="/playlist/:id" element={<PlaylistVideos />} />
+            <PrivateRoute path="/watch-later" element={<WatchLaterPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>

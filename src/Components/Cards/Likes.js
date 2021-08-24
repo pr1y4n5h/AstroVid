@@ -9,14 +9,14 @@ import { removeLikes } from "../../api/Likes/removeLikes";
 import { useAuth } from "../../Contexts/AuthContext";
 
 export function Likes({ likesData }) {
-  const { _id: videoID , name, category, credits } = likesData;
+  const { _id: videoID, name, category, credits } = likesData;
   const { dispatchLikes } = useLikesContext();
-  const {token} = useAuth();
+  const { token } = useAuth();
 
   return (
     <>
       <div className="videos">
-        <img src={`${thumbnail(videoID)}`} alt={{ name }} />
+        <img src={`${thumbnail(videoID)}`} alt={name} />
         <span
           className="delete-icon"
           onClick={() => removeLikes(videoID, dispatchLikes, token)}

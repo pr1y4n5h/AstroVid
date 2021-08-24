@@ -15,7 +15,7 @@ export function WatchLater( { watchlaterData }) {
         <>  
         
         <div className="videos">
-        <img src={`${thumbnail(_id)}`} alt={{name}} />
+        <img src={`${thumbnail(_id)}`} alt={name} />
         <span className="delete-icon" onClick={() => removeWatchlist(watchlistId, _id, dispatchWatchlist) }> <DeleteIcon style={{ color: "#ff0000" }} /> </span>
         <div className="videos-title">
         <p> {name} </p>

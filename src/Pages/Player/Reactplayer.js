@@ -19,31 +19,28 @@ import WatchLaterSharpIcon from "@material-ui/icons/WatchLaterSharp";
 import PlaylistAddOutlinedIcon from "@material-ui/icons/PlaylistAddOutlined";
 import PlaylistAddCheckSharpIcon from "@material-ui/icons/PlaylistAddCheckSharp";
 import { useAuth } from "../../Contexts/AuthContext";
-import {PlaylistModal} from "../../Components/Playlist/PlaylistModal"
+import { PlaylistModal } from "../../Components/Playlist/PlaylistModal";
 import { usePlaylist } from "../../Contexts/PlaylistContext";
 
 export function Player() {
   const { loader, dispatchVideos } = useVideosContext();
   const { likes, dispatchLikes } = useLikesContext();
-  const {playlist, dispatchPlaylist} = usePlaylist();
+  const { playlist, dispatchPlaylist } = usePlaylist();
   const { id } = useParams();
   const videoData = useReactPlayer(id);
-  const { watchlist, watchlistId, dispatchWatchlist } = useWatchlistContext();
-  const [toggle, setToggle] = useState(false);
-  const {token} = useAuth();
+  const { watchlist, dispatchWatchlist } = useWatchlistContext();
+  const { token } = useAuth();
 
   function likeHandler(videoData) {
-    if(token) {
+    if (token) {
       if (likes.some((item) => item._id === id)) {
         removeLikes(videoData._id, dispatchLikes, token);
       } else {
         addLikes(videoData, dispatchLikes, token);
       }
+    } else {
+      alert("Please Login");
     }
-    else {
-      alert("Please Login")
-    }
-      
   }
 
   function likeToggle(id) {
@@ -54,19 +51,16 @@ export function Player() {
     }
   }
 
-
-
   function watchLaterHandler(videoData) {
-    if(token) {
-    if (watchlist.some((item) => item._id === id)) {
-      removeWatchlist(videoData._id, dispatchWatchlist, token);
+    if (token) {
+      if (watchlist.some((item) => item._id === id)) {
+        removeWatchlist(videoData._id, dispatchWatchlist, token);
+      } else {
+        addWatchlist(videoData, dispatchWatchlist, token);
+      }
     } else {
-      addWatchlist(videoData, dispatchWatchlist, token);
+      alert("Please Login");
     }
-  }
-  else {
-    alert("Please Login")
-  }
   }
 
   function watchLaterToggle(id) {
@@ -77,18 +71,15 @@ export function Player() {
     }
   }
 
-
-  function playlistHandler(){
-    if(token) {
-      dispatchPlaylist({type: "SHOW_PLAYLIST", payload: videoData})
+  function playlistHandler() { 
+    if (token) {
+      dispatchPlaylist({ type: "SHOW_PLAYLIST", payload: videoData });
+    } else {
+      alert("Please Login");
     }
-    else {
-      alert("Please Login")
-    }
-
   }
 
-  console.log(playlist)
+  // console.log(playlist);
 
   return (
     <>
@@ -105,12 +96,12 @@ export function Player() {
                   playing={true}
                   width="100%"
                   height="100%"
-                />
+                /> 
               </div>
 
               <div className="player-buttons">
                 <ul className="player-buttons-ul">
-                  <li>
+                  <li className="player-buttons-li">
                     <span onClick={() => likeHandler(videoData)}>
                       {likeToggle(videoData._id)}
                     </span>
@@ -118,13 +109,13 @@ export function Player() {
                       {likes.some((item) => item._id === id) ? `Liked` : `Like`}
                     </p>
                   </li>
-                  <li>
+                  <li className="player-buttons-li">
                     <span onClick={() => watchLaterHandler(videoData)}>
                       {watchLaterToggle(videoData._id)}
-                    </span>
+                    </span> 
                     <p>Watch Later</p>
                   </li>
-                  <li onClick={playlistHandler} >
+                  <li className="player-buttons-li" onClick={playlistHandler}>
                     <span>
                       <PlaylistAddOutlinedIcon />
                     </span>
@@ -147,18 +138,7 @@ export function Player() {
               </div>
 
               <div className="player-description">
-                <span onClick={() => setToggle((toggle) => !toggle)}>
-                  {toggle ? "Show Less..." : "Show More..."}
-                </span>
-                <p
-                  style={
-                    !toggle
-                      ? { visibility: "hidden" }
-                      : { visibility: "visible" }
-                  }
-                >
-                  Description : {videoData.description}
-                </p>
+                <p>Description : {videoData.description}</p>
               </div>
             </div>
           </>

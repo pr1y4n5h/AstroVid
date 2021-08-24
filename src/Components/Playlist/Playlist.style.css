@@ -1,7 +1,6 @@
 .modal {
     width: 400px;
     height: 200px;
-    /* background-color: #000; */
     background-color: #fff;
     color: black;
     position: absolute;
@@ -27,4 +26,20 @@
 .modal-input {
     display: flex;
     justify-content: space-between;
+}
+
+@media only screen and (max-width: 768px) {
+    .modal {
+        width: 100%;
+        height: 250px;
+        background-color: #fff;
+        color: black;
+        position: absolute;
+        top: 30%;
+        left: 0;
+        z-index: 100;
+        overflow: auto;
+        padding: 1rem 1rem;
+    }
+
 }
