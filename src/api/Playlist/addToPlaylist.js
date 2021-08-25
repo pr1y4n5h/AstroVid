@@ -23,6 +23,7 @@ export async function addToPlaylist(
     );
 
     if (status === 201 && success === true) {
+      console.log("Added")
       dispatchPlaylist({ type: "ADD_TO_PLAYLIST", payload: playlist });
       toastSuccessText("Video Added to Playlist!");
     }

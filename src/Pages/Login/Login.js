@@ -1,41 +1,55 @@
+import { Button } from "@material-ui/core";
 import { useState, useRef, useEffect } from "react";
 import { FaUser, FaKey, FaEye, FaEyeSlash } from "react-icons/fa";
-import {NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { toastSuccessText, toastFailText } from "../../Components/toast";
 import { useAuth } from "../../Contexts/AuthContext";
-
+import { useVideosContext } from "../../Contexts/VideosContext";
+import "./Login.style.css";
 
 export const Login = () => {
+  const { state } = useLocation();
+  const {loader, dispatchVideos} = useVideosContext();
+  const navigate = useNavigate();
+  const inputRef = useRef(null);
 
-    const { state } = useLocation(); 
-    const navigate = useNavigate();
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
-    const { loginUserWithCreds, loginUserAsGuest, credentials, setCredentials } =
+  const { loginUserWithCreds, loginUserAsGuest, credentials, setCredentials } =
     useAuth();
-    const [isVisible, setVisible] = useState(false);
+  const [isVisible, setVisible] = useState(false);
 
-    async function loginHandler() {
-        const { username, password } = credentials;
-        try {
-          const response = await loginUserWithCreds(username, password);
-          if (response.success === true) {
-            setCredentials("");
-            toastSuccessText("You are Logged In now !");
-            navigate(state?.from ? state.from : "/");
-          }
-        } catch (err) {
-          console.log(err);
-        }
-      }
-
-      async function loginAsGuestHandler() {
-        await loginUserAsGuest();
+  async function loginHandler() {
+    const { username, password } = credentials;
+    dispatchVideos({type: "SET_LOADER"})
+    try {
+      const response = await loginUserWithCreds(username, password);
+      if (response.success === true) {
+        setCredentials("");
         toastSuccessText("You are Logged In now !");
         navigate(state?.from ? state.from : "/");
       }
+    } catch (err) {
+      console.log(err);
+    }
+    finally {
+      dispatchVideos({type: "SET_LOADER"})
+    }
+  }
 
-    return (
-        <div className="login-page-box">
+  async function loginAsGuestHandler() {
+    dispatchVideos({type: "SET_LOADER"})
+    await loginUserAsGuest();
+    dispatchVideos({type: "SET_LOADER"})
+    toastSuccessText("You are Logged In now !");
+    setCredentials("");
+    navigate(state?.from ? state.from : "/");
+  }
+
+  return (
+    <div className="login-page-box">
       <div className="login-box">
         <h1 className="login-heading">Login</h1>
         <div className="credentials">
@@ -43,7 +57,7 @@ export const Login = () => {
           <input
             type="text"
             placeholder="Enter Username"
-            // ref={inputRef}
+            ref={inputRef}
             value={credentials.username}
             onChange={(event) =>
               setCredentials({ ...credentials, username: event.target.value })
@@ -67,18 +81,19 @@ export const Login = () => {
             {isVisible ? <FaEyeSlash /> : <FaEye />}
           </span>
         </div>
-        <button type="submit" className="login-btn" onClick={loginHandler}>
-          Login
-        </button>
+
+        <Button onClick={loginHandler} variant="contained">
+          { loader ? "Logging In..." : "Log In"}
+        </Button>
         <div className="login-lower">
           <NavLink className="signup-link" to="/sign-up">
             Don't have account?
           </NavLink>
           <span className="signup-link" onClick={loginAsGuestHandler}>
             Login as Guest
-          </span>
+          </span> 
         </div>
       </div>
     </div>
-    )
-}
+  );
+};

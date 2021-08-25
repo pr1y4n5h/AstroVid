@@ -1,5 +1,4 @@
 import ReactPlayer from "react-player";
-import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useVideosContext } from "../../Contexts/VideosContext";
 import { useReactPlayer } from "../../Hooks/useReactPlayer";
@@ -11,6 +10,7 @@ import { addLikes } from "../../api/Likes/addLikes";
 import { removeLikes } from "../../api/Likes/removeLikes";
 import { addWatchlist } from "../../api/Watchlist/addWatchlist";
 import { removeWatchlist } from "../../api/Watchlist/removeWatchlist";
+import { toastSuccessText, toastFailText } from "../../Components/toast";
 
 import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
 import ThumbUpAltSharpIcon from "@material-ui/icons/ThumbUpAltSharp";
@@ -39,7 +39,7 @@ export function Player() {
         addLikes(videoData, dispatchLikes, token);
       }
     } else {
-      alert("Please Login");
+      toastFailText("Please Login to continue!");
     }
   }
 
@@ -59,7 +59,7 @@ export function Player() {
         addWatchlist(videoData, dispatchWatchlist, token);
       }
     } else {
-      alert("Please Login");
+      toastFailText("Please Login to continue!");
     }
   }
 
@@ -75,11 +75,9 @@ export function Player() {
     if (token) {
       dispatchPlaylist({ type: "SHOW_PLAYLIST", payload: videoData });
     } else {
-      alert("Please Login");
+      toastFailText("Please Login to continue!");
     }
   }
-
-  // console.log(playlist);
 
   return (
     <>
@@ -143,8 +141,6 @@ export function Player() {
             </div>
           </>
         )}
-
-        <hr />
       </div>
     </>
   );

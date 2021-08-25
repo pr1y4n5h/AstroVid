@@ -23,6 +23,7 @@
     padding: 1rem;
 }
 
+
 @media (max-width: 800px) {
     .sidebar-aside {
         display: none;

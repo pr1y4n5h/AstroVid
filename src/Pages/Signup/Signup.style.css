@@ -1,0 +1,87 @@
+.signup-page-box {
+    display: flex;
+    height: 85vh;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    font-family: "Raleway", sans-serif;
+    color: var(--base-color);
+  } 
+
+  .signup-box {
+    display: flex;
+    flex-direction: column;
+    background: var(--secondary-color);
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    width: 325px;
+    height: 500px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem 1rem;
+    border-radius: 1rem;
+  }
+
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  
+.signup-box h1 {
+    float: left;
+    font-size: 2.2;
+    margin: 0 1rem;
+    padding: 1rem 0;
+  }
+  
+  .credentials {
+    width: 100%;
+    overflow: hidden;
+    font-size: 1rem;
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom: 1px solid var(--base-color);
+    margin-bottom: 1rem;
+  }
+  
+  .credentials input {
+    border: none;
+    outline: none;
+    background: none;
+    color: var(--base-color);
+    width: 100%;
+    margin: 10px;
+    font-size: 1rem;
+  }
+  
+  .eye-btn {
+    position: absolute;
+    margin-top: 8px;
+    right: 25px;
+    cursor: pointer;
+  }
+
+  .already-registered {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .login-link {
+    color: var(--base-color);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .login-link:hover {
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+
+  @media screen and (max-width: 768px) {
+    .signup-box {
+      top: 50%;
+    }
+  }
+  

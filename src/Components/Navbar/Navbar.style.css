@@ -4,10 +4,11 @@
   margin: 1rem;
   font-size: 2rem;
   font-family: "Rubik", sans-serif;
+  color:var(--base-color);
 }
 
 .navbar {
-  background: #121212;
+  background: var(--dark-color);
   height: 100px;
   display: flex;
   justify-content: space-between;
@@ -21,21 +22,24 @@
   display: flex;
   align-items: center;
   list-style: none;
+  margin-right: 2rem;
+  padding: 0;
 }
 
-.nav-btn {
+.nav-btn, .nav-signup-btn {
   text-decoration: none;
   padding: 1rem 1rem;
   margin: 1rem 1rem;
   cursor: pointer;
 }
 
-.mobile-menu-icon {
+.mobile-menu-icon, .nav-menu {
   display: none;
 }
 
-.nav-menu {
-  display: none;
+.nav-username {
+  color: var(--base-color);
+  font-size: 1.2rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -43,29 +47,43 @@
     height: 80px;
     display: flex;
     justify-content: space-between;
+    max-width: 100%;
   }
 
   .logo {
     position: relative;
     left: 45px;
-    top: 15px;
+    top: 25px;
     margin: 0;
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
 
   .nav-btn {
     text-decoration: none;
     padding: 0;
-    color: #fff;
+    color: var(--base-color);
     margin-right: 0.5rem;
     text-align: center;
+  }
+
+  
+  .nav-btn-username {
+    padding: 0;
+    color: var(--base-color);
+    /* margin-right: 0.5rem; */
+    text-align: center;
+  }
+
+
+  .nav-signup-btn {
+    display: none;
   }
 
   .nav-links-mobile {
     position: absolute;
     display: block;
     list-style: none;
-    background-color: #121212;
+    background-color: var(--dark-color);
     left: 0;
     top: 75px;
     transition: all 1s ease-out;
@@ -77,16 +95,20 @@
     display: block;
     position: absolute;
     font-size: 1.5rem;
-    color: white;
+    color:var(--base-color);
     background-color: var(--dark-color);
     border: none;
     outline: none;
     top: 1.5rem;
     left: 1rem;
-    border: 1px solid white;
+    transition: all 1s ease-out;
   }
 
   .nav-menu {
+    display: none;
+  }
+
+  .nav-username {
     display: none;
   }
 }

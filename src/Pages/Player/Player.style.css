@@ -6,7 +6,6 @@
 
 .player {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
-  /* border: 1px solid; */
   position: relative;
 }
 
@@ -24,11 +23,10 @@
   display: flex;
   margin-top: 1rem;
   margin-bottom: 1rem;
-
 }
 
 .player-buttons-li {
-  margin-left:1.10rem;
+  margin-left: 1.1rem;
   list-style: none;
   margin-right: 0.75rem;
   cursor: pointer;
@@ -46,24 +44,20 @@
 .player-heading p {
   font-weight: bolder;
   font-size: 2rem;
-  margin: 1rem 1rem;
 }
 
 .player-category p {
-  margin: 1rem 1rem;
   font-style: oblique;
 }
 
-.player-description p {
-  margin: 1rem 1rem;
-}
-
-.player-credits p {
+.player-credits p,
+.player-description p,
+.player-category p,
+.player-heading p {
   margin: 1rem 1rem;
 }
 
 @media only screen and (max-width: 768px) {
-
   .player-container {
     padding: 0;
     border: 1px solid #fff;
@@ -81,11 +75,10 @@
 
   .player-buttons-ul {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
   }
 
   .player-buttons-li {
-    margin-left:1.5rem;
+    margin-left: 1.5rem;
   }
-
 }

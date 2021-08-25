@@ -6,11 +6,11 @@ import { useVideosContext } from "../Contexts/VideosContext";
 export const useUserPlaylist = (playlistId) => {
   const [playlist, setPlaylist] = useState();
   const { dispatchVideos } = useVideosContext();
-  
+
   const { token } = useAuth(); 
 
   async function fetchData() {
-    dispatchVideos({ type: "SET_LOADER" });
+    dispatchVideos({ type: "SET_LOADER" }); 
     try {
       const { data, status } = await axios.get(
         `https://astrovids-backend.pr1y4n5h.repl.co/playlists/${playlistId}`,

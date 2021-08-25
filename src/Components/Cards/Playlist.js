@@ -11,7 +11,7 @@ export const PlaylistCard = ({ item }) => {
   
   const playlistThumbnail = (playlist) => {
     if(playlist.length > 0) {
-      return thumbnail(playlist[0]?._id)
+      return thumbnail(playlist[0]?._id) 
     }
     else {
       return thumbnail("IZDReMwYM0Y")

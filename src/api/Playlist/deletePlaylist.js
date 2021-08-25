@@ -18,10 +18,11 @@ export async function deletePlaylist(
       { headers: { authorization: token } }
     );
 
-    if (status === 201 && success === true) {
+    if (status === 201) {
+      console.log("zxfsdgfd")
       dispatchPlaylist({ type: "DELETE_PLAYLIST", payload: playlist });
       toastSuccessText("Playlist Deleted!");
-      console.log("Deleted")
+      console.log("zxfsdgfd")
     }
   } catch (err) {
     console.log(err);

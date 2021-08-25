@@ -1,6 +1,6 @@
 .modal {
     width: 400px;
-    height: 200px;
+    height: 250px;
     background-color: #fff;
     color: black;
     position: absolute;
@@ -9,10 +9,11 @@
     z-index: 100;
     overflow: auto;
     padding: 1rem 1rem;
+    font-family: "Raleway", sans-serif;
 }
 
 .show-modal {
-    display: block;
+    display: block; 
 }
 
 .hide-modal {
@@ -21,12 +22,40 @@
 
 .close-btn {
     text-align: right;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #FF0000;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-input {
     display: flex;
     justify-content: space-between;
 }
+
+.modal-input input {
+    outline: none;
+    padding: 0.5rem;
+    margin: 10px;
+}
+
+.playlist-list {
+    margin: 8px;
+}
+
+.single-list {
+    /* border: 2px solid; */
+    margin: 1rem;
+    cursor: pointer;
+}
+
+
 
 @media only screen and (max-width: 768px) {
     .modal {

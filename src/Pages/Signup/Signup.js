@@ -5,6 +5,9 @@ import { HiMail } from "react-icons/hi";
 import { RiContactsFill } from "react-icons/ri";
 import axios from "axios";
 import { toastSuccessText, toastFailText } from "../../Components/toast";
+import "./Signup.style.css"
+import { Button } from "@material-ui/core";
+import { useVideosContext } from "../../Contexts/VideosContext";
 
 export const Signup = () => {
   const [user, setUser] = useState({
@@ -16,12 +19,19 @@ export const Signup = () => {
 
   const [isVisible, setVisible] = useState(false);
   const navigate = useNavigate();
+  const {loader, dispatchVideos} = useVideosContext();
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const registerHandler = async (e) => {
     e.preventDefault();
+    dispatchVideos({type: "SET_LOADER"})
     try {
       const { name, username, email, password } = user;
-
       const { data, status } = await axios.post(
         "https://AstroVids-Backend.pr1y4n5h.repl.co/sign-up",
         {
@@ -45,6 +55,9 @@ export const Signup = () => {
         toastFailText("Something went wrong! Please try later...");
       }
     }
+    finally {
+      dispatchVideos({type: "SET_LOADER"})
+    }
   }
 
   return (
@@ -56,7 +69,7 @@ export const Signup = () => {
             <RiContactsFill />
             <input
               type="text"
-            //   ref={inputRef}
+              ref={inputRef}
               placeholder="Your Name"
               value={user.name}
               onChange={(event) =>
@@ -103,9 +116,11 @@ export const Signup = () => {
               {isVisible ? <FaEyeSlash /> : <FaEye />}
             </span>
           </div>
-          <button type="submit" className="login-btn" onClick={registerHandler}>
-            Register
-          </button>
+
+          <Button variant="contained" onClick={registerHandler}>
+            { loader ? "Registering..." : "Register"}
+          </Button>
+
           <div className="already-registered">
             <NavLink className="login-link" to="/login">
               Already registered?

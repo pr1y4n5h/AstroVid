@@ -1,114 +1,124 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
-
 .videos {
-    position: relative; 
-    width: 290px;
-    height: 240px;
-    /* border: 3px solid black; */
-    margin: 2rem 2rem;
-    background-color: #373b69;
-    border-radius: 1rem 1rem;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    overflow: hidden;
-    cursor: pointer;
-    font-family: 'Raleway', sans-serif;
-  }
+  position: relative;
+  width: 300px;
+  height: 240px;
+  margin: 2rem 2rem;
+  background-color: var(--secondary-color);
+  border-radius: 1rem 1rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+}
 
-  .delete-icon {
-    position: absolute;
-    right: 2px;
-    top: 3px;
-    margin: 0;
-    padding:0;
-    cursor: pointer;
-  }
+.delete-icon {
+  position: absolute;
+  right: 8px;
+  top: 5px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
 
-  .videos-title {
-    color: #efefef;
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
+.delete-icon-thumb {
+    color: var(--base-color);
+}
 
-  }
-  
-  .videos-title p {
-    text-decoration: none;
-  }
+.delete-icon-bin {
+  color: var(--base-color);
+}
 
+.delete-icon-thumb:hover {
+  color: var(--primary-color);
+}
 
-  .videos img {
-    max-width: 100%;
-  } 
-  
-  .videos:hover {
-    transform:scale(1.07)
-  }
-  
-  
-  .videos-overview{
-    position: absolute;
-    padding: 1rem;
-    background-color: #fff;
-    color: #22254b;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    transform: translateY(100%);
-    transition: 0.3s ease-in-out;
-  }
-  
-  .videos:hover .videos-overview {
-    transform: translateY(0);
-  }
+.delete-icon-bin:hover {
+  color: var(--primary-color);
+}
 
-  .play-btn-div {
-    display: flex;
-    justify-content: center;
-    font-size:0.75rem;
-  }
+.videos-title {
+  color: var(--base-color);
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
 
-  .play-btn-div .play-btn {
-    text-decoration: none;
-    border-color: #ff4e00;
-    border-radius: 0.5rem;
-    color: #fff;
-    box-shadow: 0 0 40px 40px #ff4e00 inset, 0 0 0 0 #ff4e00;
-    -webkit-transition: all 150ms ease-in-out;
-    transition: all 150ms ease-in-out;
-    padding: 0.5rem;
-  }
+.videos-title p {
+  text-decoration: none;
+}
 
-  .play-btn span:hover {
-    cursor: pointer;
-  }
+.videos img {
+  max-width: 100%;
+}
 
-  .playlist-card {
-    position: relative; 
-    width: 300px;
-    height: 250px;
-    margin: 2rem 2rem;
-    background-color: #373b69;
-    border-radius: 1rem 1rem;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    overflow: hidden;
-    font-family: 'Raleway', sans-serif;
-  }
+.videos:hover {
+  transform: scale(1.07);
+}
 
-  .playlist-card img {
-    max-width: 100%;
-  }
+.videos-overview {
+  position: absolute;
+  padding: 1rem;
+  background-color: var(--base-color);
+  color: #22254b;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(100%);
+  transition: 0.3s ease-in-out;
+}
 
-  .playlist-title {
-    color: #efefef;
-    display: flex;
-    justify-content: center;
-    margin-top: 8px;
-    margin-bottom: 8px;
-  }
+.videos:hover .videos-overview {
+  transform: translateY(0);
+}
 
-  
+.play-btn-div {
+  display: flex;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.play-btn-div .play-btn {
+  text-decoration: none;
+  border-color: var(--primary-color);
+  border-radius: 0.5rem;
+  color: #fff;
+  box-shadow: 0 0 40px 40px var(--primary-color) inset,
+    0 0 0 0 var(--primary-color);
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  padding: 0.5rem;
+}
+
+.play-btn span:hover {
+  cursor: pointer;
+}
+
+.playlist-card {
+  position: relative;
+  width: 300px;
+  height: 250px;
+  margin: 2rem 2rem;
+  background-color: var(--secondary-color);
+  border-radius: 1rem 1rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+  font-family: "Raleway", sans-serif;
+}
+
+.playlist-card img {
+  max-width: 100%;
+}
+
+.playlist-title {
+  color: #efefef;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
 @media only screen and (max-width: 768px) {
-  .videos { 
+  .videos {
     width: 300px;
     height: 240px;
     margin-top: 1rem;

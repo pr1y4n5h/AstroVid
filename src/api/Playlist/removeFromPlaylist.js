@@ -20,6 +20,7 @@ export async function removeFromPlaylist(
     );
 
     if (status === 201 && success === true) {
+      console.log("Removed")
       dispatchPlaylist({ type: "REMOVE_FROM_PLAYLIST", payload: playlist });
       toastSuccessText("Video Removed from Playlist!");
     }

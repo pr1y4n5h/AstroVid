@@ -4,18 +4,27 @@ import Button from "@material-ui/core/Button";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { useAuth } from "../../Contexts/AuthContext";
 import { useState } from "react";
+import { useLikesContext } from "../../Contexts/LikesContext";
+import { useWatchlistContext } from "../../Contexts/WatchlistContext";
+import { usePlaylist } from "../../Contexts/PlaylistContext";
 
 export function Navbar() {
   const navigate = useNavigate();
   const { state } = useLocation();
-  const { token, logOutUser } = useAuth();
+  const { token, logOutUser, loggedUser } = useAuth();
   const [isResponsive, setResponsive] = useState(false);
+  const { dispatchLikes } = useLikesContext();
+  const { dispatchWatchlist } = useWatchlistContext();
+  const { dispatchPlaylist } = usePlaylist();
 
   const loginHandler = () => {
     return navigate("/login");
   };
 
   const logOutHandler = () => {
+    dispatchLikes({ type: "CLEAR_LIKES" });
+    dispatchWatchlist({ type: "CLEAR_WATCHLIST" });
+    dispatchPlaylist({ type: "CLEAR_PLAYLIST" });
     logOutUser();
     navigate(state?.from ? state.from : "/");
   };
@@ -38,6 +47,9 @@ export function Navbar() {
           className={isResponsive ? "nav-links-mobile" : "nav-menu"}
           onClick={() => setResponsive(false)}
         >
+        { token && <div className="nav-btn-username">
+          <h3> Hi {loggedUser?.name}! </h3>
+        </div>}
           <NavLink
             className="nav-btn"
             to="/"
@@ -73,7 +85,7 @@ export function Navbar() {
 
           <NavLink
             className="nav-btn"
-            to="/playlist"
+            to="/sign-up"
             activeStyle={{ color: "#ff4e00" }}
             style={token && { display: "none" }}
           >
@@ -81,14 +93,17 @@ export function Navbar() {
           </NavLink>
         </ul>
 
-        <span class="logo">AstroVids 🚀</span>
+        <span class="logo">AstroVids</span>
         <ul class="nav-btns">
           {!token && (
-            <span className="nav-btn">
+            <span className="nav-signup-btn">
               <Button onClick={() => navigate("/sign-up")} variant="contained">
                 <li> Sign up </li>
               </Button>
             </span>
+          )}
+          {token && (
+            <span className="nav-username">Hi {loggedUser?.name}!</span>
           )}
           <span className="nav-btn">
             <Button

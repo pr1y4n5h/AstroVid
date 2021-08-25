@@ -2,7 +2,6 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { Player } from "./Pages/Player/Reactplayer";
 import { VideosPage } from "./Pages/Videos/VideosPage";
-import { SideBarMenu } from "./Components/Sidebar.js";
 import { NormalSideBarMenu } from "./Components/Sidebar/NormalSidebar";
 import { Navbar } from "./Components/Navbar/Navbar";
 import { LikedVideosPage } from "./Pages/LikedVideos/LikedVideosPage";

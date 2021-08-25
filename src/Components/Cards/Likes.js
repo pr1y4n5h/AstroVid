@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { thumbnail } from "../../utils/thumbnail";
 import "./Cards.style.css";
 import { useLikesContext } from "../../Contexts/LikesContext";
-import DeleteIcon from "@material-ui/icons/Delete";
+import ThumbDownAltRoundedIcon from '@material-ui/icons/ThumbDownAltRounded';
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
 import { removeLikes } from "../../api/Likes/removeLikes";
 import { useAuth } from "../../Contexts/AuthContext";
@@ -21,7 +21,7 @@ export function Likes({ likesData }) {
           className="delete-icon"
           onClick={() => removeLikes(videoID, dispatchLikes, token)}
         >
-          <DeleteIcon style={{ color: "#ff0000" }} />
+          <ThumbDownAltRoundedIcon className="delete-icon-thumb" />
         </span>
         <div className="videos-title">
           <p> {name} </p>

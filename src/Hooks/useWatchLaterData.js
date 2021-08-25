@@ -8,7 +8,7 @@ export function useWatchLaterData() {
   const { dispatchVideos } = useVideosContext();
   const { dispatchWatchlist, watchlist } = useWatchlistContext();
  
-  const { token } = useAuth();
+  const { token, loggedUser } = useAuth();
 
   async function fetchData() {
     dispatchVideos({ type: "SET_LOADER" });
@@ -41,5 +41,5 @@ export function useWatchLaterData() {
     if (token && watchlist.length === 0) {
       fetchData();
     }
-  }, [token]);
+  }, [token, loggedUser]);
 }

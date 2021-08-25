@@ -7,7 +7,7 @@ import { useVideosContext } from "../Contexts/VideosContext";
 export function usePlaylistData() {
   const { dispatchPlaylist, playlist } = usePlaylist();
   const { dispatchVideos } = useVideosContext();
-  const { token } = useAuth();
+  const { token, loggedUser } = useAuth();
 
   async function fetchData() {
     dispatchVideos({ type: "SET_LOADER" });
@@ -32,5 +32,5 @@ export function usePlaylistData() {
     if (playlist.length === 0 && token) {
       fetchData();
     }
-  }, [token]);
+  }, [token, loggedUser]);
 }

@@ -45,6 +45,12 @@ export function playlistReducer(state, action) {
         playlist: action.payload,
       };
 
+      case "CLEAR_PLAYLIST":
+        return {
+          ...state,
+          playlist: []
+        };
+
     default:
       return state;
   }
