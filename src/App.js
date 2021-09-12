@@ -9,16 +9,15 @@ import { PlaylistPage } from "./Pages/Playlist/PlaylistPage";
 import { WatchLaterPage } from "./Pages/WatchLater/WatchLaterPage";
 import { ToastContainer } from "react-toastify";
 import { ErrorPage } from "./Pages/ErrorPage";
-import { Signup } from "./Pages/Signup/Signup"
-import { Login } from "./Pages/Login/Login"
+import { Signup } from "./Pages/Signup/Signup";
+import { Login } from "./Pages/Login/Login";
 import { useLikesData } from "./Hooks/useLikesData";
 import { useWatchLaterData } from "./Hooks/useWatchLaterData";
-import {usePlaylistData } from "./Hooks/usePlaylistData";
-import {PlaylistVideos} from "./Pages/Playlist/PlaylistVideos"
-import {PrivateRoute} from "./PrivateRoute";
+import { usePlaylistData } from "./Hooks/usePlaylistData";
+import { PlaylistVideos } from "./Pages/Playlist/PlaylistVideos";
+import { PrivateRoute } from "./PrivateRoute";
 
 export default function App() {
-  
   useLikesData();
   useWatchLaterData();
   usePlaylistData();

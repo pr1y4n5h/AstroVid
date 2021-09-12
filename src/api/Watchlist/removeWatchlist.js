@@ -16,6 +16,6 @@ export async function removeWatchlist(videoId, dispatchWatchlist, token) {
       toastFailText("Removed from Watch Later!");
     }
   } catch (error) {
-    console.log(error.stack);
+    console.log(error);
   }
 }
