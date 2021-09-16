@@ -6,8 +6,8 @@ export function VideoCard({ videos }) {
   const { _id, name, category, credits } = videos;
   return (
     <>
-      <Link to={`/${_id}`} className="link">
-        <div className="videos">
+      <div className="videos">
+        <Link to={`/${_id}`} className="link">
           <img src={`${thumbnail(_id)}`} alt={{ name }} />
           <div className="videos-title">
             <p> {name} </p>
@@ -18,8 +18,8 @@ export function VideoCard({ videos }) {
               <em> Genre : {category} </em>
             </p>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </>
   );
 }

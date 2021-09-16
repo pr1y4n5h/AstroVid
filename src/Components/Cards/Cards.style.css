@@ -52,10 +52,6 @@
   text-decoration: none;
 }
 
-.videos img {
-  /* width: 100%; */
-}
-
 .videos-overview {
   position: absolute;
   padding: 1rem;
@@ -90,6 +86,10 @@
   padding: 0.5rem;
 }
 
+.link {
+  text-decoration: none;
+}
+
 .play-btn span:hover {
   cursor: pointer;
 }
@@ -121,5 +121,6 @@
 @media only screen and (max-width: 768px) {
   .videos {
     width: 320px;
+    margin: 2rem 1rem;
   }
 }
