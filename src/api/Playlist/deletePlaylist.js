@@ -1,5 +1,5 @@
 import axios from "axios";
-import { toastSuccessText } from "../../Components/toast";
+import { toastFailText } from "../../Components/toast";
 
 export async function deletePlaylist(
   playlistId,
@@ -18,11 +18,9 @@ export async function deletePlaylist(
       { headers: { authorization: token } }
     );
 
-    if (status === 201) {
-      console.log("zxfsdgfd")
+    if(status === 200) {
       dispatchPlaylist({ type: "DELETE_PLAYLIST", payload: playlist });
-      toastSuccessText("Playlist Deleted!");
-      console.log("zxfsdgfd")
+      toastFailText("Playlist Deleted!");
     }
   } catch (err) {
     console.log(err);

@@ -1,14 +1,19 @@
 .videos {
   position: relative;
   width: 300px;
-  height: 240px;
+  height: 260px;
   margin: 2rem 2rem;
   background-color: var(--secondary-color);
   border-radius: 1rem 1rem;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   overflow: hidden;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
   font-family: "Raleway", sans-serif;
+}
+
+.videos:hover {
+  transform: scale(1.1);
 }
 
 .delete-icon {
@@ -48,11 +53,7 @@
 }
 
 .videos img {
-  max-width: 100%;
-}
-
-.videos:hover {
-  transform: scale(1.07);
+  /* width: 100%; */
 }
 
 .videos-overview {
@@ -119,8 +120,6 @@
 
 @media only screen and (max-width: 768px) {
   .videos {
-    width: 300px;
-    height: 240px;
-    margin-top: 1rem;
+    width: 320px;
   }
 }

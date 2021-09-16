@@ -1,12 +1,10 @@
-import React from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../Contexts/AuthContext";
 import { usePlaylist } from "../../Contexts/PlaylistContext";
 import { useVideosContext } from "../../Contexts/VideosContext";
 import { useUserPlaylist } from "../../Hooks/useUserPlaylist";
-import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
-import DeleteIcon from "@material-ui/icons/Delete";
+import {Delete,PlayCircleFilledWhite}  from "@material-ui/icons";
 import { removeFromPlaylist } from "../../api/Playlist/removeFromPlaylist";
 import { thumbnail } from "../../utils/thumbnail";
 import {Empty} from "../../Components/Empty/Empty"
@@ -40,7 +38,7 @@ export const PlaylistVideos = () => {
               removeFromPlaylist(id, dispatchPlaylist, video._id, token)
             }
           >
-            <DeleteIcon style={{ color: "#ff0000" }} />
+            <Delete style={{ color: "#ff0000" }} />
           </span>
           <div className="videos-title">
             <p> {video.name} </p>
@@ -52,7 +50,7 @@ export const PlaylistVideos = () => {
             </p>
             <div className="play-btn-div">
               <Link to={`/${video._id}`} className="play-btn">
-                Play now <PlayCircleFilledWhiteIcon />
+                Play now <PlayCircleFilledWhite />
               </Link>
             </div>
           </div>

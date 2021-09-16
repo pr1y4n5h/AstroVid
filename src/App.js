@@ -41,7 +41,7 @@ export default function App() {
           </Routes>
         </div>
       </main>
-      <ToastContainer />
+      <ToastContainer theme="colored" />
     </div>
   );
 }

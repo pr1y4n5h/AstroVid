@@ -10,22 +10,16 @@ import { addLikes } from "../../api/Likes/addLikes";
 import { removeLikes } from "../../api/Likes/removeLikes";
 import { addWatchlist } from "../../api/Watchlist/addWatchlist";
 import { removeWatchlist } from "../../api/Watchlist/removeWatchlist";
-import { toastSuccessText, toastFailText } from "../../Components/toast";
-
-import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
-import ThumbUpAltSharpIcon from "@material-ui/icons/ThumbUpAltSharp";
-import WatchLaterOutlinedIcon from "@material-ui/icons/WatchLaterOutlined";
-import WatchLaterSharpIcon from "@material-ui/icons/WatchLaterSharp";
-import PlaylistAddOutlinedIcon from "@material-ui/icons/PlaylistAddOutlined";
-import PlaylistAddCheckSharpIcon from "@material-ui/icons/PlaylistAddCheckSharp";
+import { toastFailText } from "../../Components/toast";
+import {ThumbUpAltOutlined, ThumbUpAltSharp, WatchLaterOutlined, WatchLaterSharp, PlaylistAddOutlined} from "@material-ui/icons";
 import { useAuth } from "../../Contexts/AuthContext";
 import { PlaylistModal } from "../../Components/Playlist/PlaylistModal";
 import { usePlaylist } from "../../Contexts/PlaylistContext";
 
 export function Player() {
-  const { loader, dispatchVideos } = useVideosContext();
+  const { loader } = useVideosContext();
   const { likes, dispatchLikes } = useLikesContext();
-  const { playlist, dispatchPlaylist } = usePlaylist();
+  const { dispatchPlaylist } = usePlaylist();
   const { id } = useParams();
   const videoData = useReactPlayer(id);
   const { watchlist, dispatchWatchlist } = useWatchlistContext();
@@ -45,9 +39,9 @@ export function Player() {
 
   function likeToggle(id) {
     if (likes.some((item) => item._id === id)) {
-      return <ThumbUpAltSharpIcon style={{ color: "#ff4e00" }} />;
+      return <ThumbUpAltSharp style={{ color: "#ff4e00" }} />;
     } else {
-      return <ThumbUpAltOutlinedIcon />;
+      return <ThumbUpAltOutlined />;
     }
   }
 
@@ -65,13 +59,13 @@ export function Player() {
 
   function watchLaterToggle(id) {
     if (watchlist.some((item) => item._id === id)) {
-      return <WatchLaterSharpIcon style={{ color: "#ff4e00" }} />;
+      return <WatchLaterSharp style={{ color: "#ff4e00" }} />;
     } else {
-      return <WatchLaterOutlinedIcon />;
+      return <WatchLaterOutlined />;
     }
   }
 
-  function playlistHandler() { 
+  function playlistHandler() {
     if (token) {
       dispatchPlaylist({ type: "SHOW_PLAYLIST", payload: videoData });
     } else {
@@ -94,7 +88,7 @@ export function Player() {
                   playing={true}
                   width="100%"
                   height="100%"
-                /> 
+                />
               </div>
 
               <div className="player-buttons">
@@ -110,12 +104,12 @@ export function Player() {
                   <li className="player-buttons-li">
                     <span onClick={() => watchLaterHandler(videoData)}>
                       {watchLaterToggle(videoData._id)}
-                    </span> 
+                    </span>
                     <p>Watch Later</p>
                   </li>
                   <li className="player-buttons-li" onClick={playlistHandler}>
                     <span>
-                      <PlaylistAddOutlinedIcon />
+                      <PlaylistAddOutlined />
                     </span>
                     <p>Playlist</p>
                   </li>

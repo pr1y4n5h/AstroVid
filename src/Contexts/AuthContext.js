@@ -1,33 +1,8 @@
-import { createContext, useContext, useState, useEffect } from "react";
-import { toastSuccessText, toastFailText } from "../Components/toast";
+import { createContext, useContext, useState} from "react";
+import { toastFailText } from "../Components/toast";
 import axios from "axios";
-import { useNavigate } from "react-router";
 
 export const AuthContext = createContext();
-
-export function setUpAuthExceptionHandler(logOut, navigate) {
-  const UNAUTHORIZED = 401;
-  axios.interceptors.response.use(
-      (response) => response,
-      (error) => {
-          if(error?.response?.status === UNAUTHORIZED) {
-              
-              logOut();
-              navigate("/login");
-          }
-          return Promise.reject(error);
-      }
-  )
-}
-
-export function setUniversalRequestToken(token) {
-  if(token) {
-      return (axios.defaults.headers.common["Authorization"] = token);
-  }
-  delete axios.defaults.headers.common["Authorization"];
-}
-
-
 
 export function AuthProvider({ children }) {
 
@@ -38,7 +13,6 @@ export function AuthProvider({ children }) {
   
     const userData = JSON.parse(localStorage?.getItem("user"));
     const savedToken = JSON.parse(localStorage?.getItem("token"))
-    const navigate = useNavigate();
     const [token, setToken] = useState(savedToken);
     const [loggedUser, setLoggedUser] = useState(userData);
   

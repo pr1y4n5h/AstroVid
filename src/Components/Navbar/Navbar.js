@@ -1,5 +1,4 @@
 import "./Navbar.style.css";
-import { FaRocket, FaBars } from "react-icons/fa";
 import Button from "@material-ui/core/Button";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 import { useAuth } from "../../Contexts/AuthContext";

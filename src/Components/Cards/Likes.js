@@ -1,10 +1,8 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { thumbnail } from "../../utils/thumbnail";
 import "./Cards.style.css";
 import { useLikesContext } from "../../Contexts/LikesContext";
-import ThumbDownAltRoundedIcon from '@material-ui/icons/ThumbDownAltRounded';
-import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
+import {ThumbDownAltRounded, PlayCircleFilledWhite} from '@material-ui/icons';
 import { removeLikes } from "../../api/Likes/removeLikes";
 import { useAuth } from "../../Contexts/AuthContext";
 
@@ -21,7 +19,7 @@ export function Likes({ likesData }) {
           className="delete-icon"
           onClick={() => removeLikes(videoID, dispatchLikes, token)}
         >
-          <ThumbDownAltRoundedIcon className="delete-icon-thumb" />
+          <ThumbDownAltRounded className="delete-icon-thumb" />
         </span>
         <div className="videos-title">
           <p> {name} </p>
@@ -33,7 +31,7 @@ export function Likes({ likesData }) {
           </p>
           <div className="play-btn-div">
             <Link to={`/${videoID}`} className="play-btn">
-              Play now <PlayCircleFilledWhiteIcon />
+              Play now <PlayCircleFilledWhite />
             </Link>
           </div>
         </div>

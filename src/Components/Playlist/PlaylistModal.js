@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../../Contexts/AuthContext";
 import { usePlaylist } from "../../Contexts/PlaylistContext";
 import "./Playlist.style.css";
@@ -79,7 +79,7 @@ export const PlaylistModal = () => {
             onChange={(evt) => setText(evt.target.value)}
             onKeyPress={(e) => handleKeyPress(e)}
           />
-          <Button variant="contained" color="primary" onClick={createPlaylistHandler}>
+          <Button disabled={loader} variant="contained" color="primary" onClick={createPlaylistHandler}>
             {loader ? "Creating..." : "Create"}
           </Button>
         </div>

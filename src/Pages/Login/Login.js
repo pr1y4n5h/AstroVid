@@ -1,8 +1,8 @@
-import { Button } from "@material-ui/core";
+import { Button, CircularProgress } from "@material-ui/core";
 import { useState, useRef, useEffect } from "react";
 import { FaUser, FaKey, FaEye, FaEyeSlash } from "react-icons/fa";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { toastSuccessText, toastFailText } from "../../Components/toast";
+import { toastSuccessText} from "../../Components/toast";
 import { useAuth } from "../../Contexts/AuthContext";
 import { useVideosContext } from "../../Contexts/VideosContext";
 import "./Login.style.css";
@@ -82,8 +82,13 @@ export const Login = () => {
           </span>
         </div>
 
-        <Button onClick={loginHandler} variant="contained">
-          { loader ? "Logging In..." : "Log In"}
+        <Button disabled={loader} onClick={loginHandler} variant="contained">
+        {loader ? (
+              <CircularProgress size={25} color="secondary" />
+            ) : (
+              "Login"
+            )}
+          
         </Button>
         <div className="login-lower">
           <NavLink className="signup-link" to="/sign-up">

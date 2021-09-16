@@ -6,7 +6,7 @@ import { RiContactsFill } from "react-icons/ri";
 import axios from "axios";
 import { toastSuccessText, toastFailText } from "../../Components/toast";
 import "./Signup.style.css"
-import { Button } from "@material-ui/core";
+import { Button, CircularProgress } from "@material-ui/core";
 import { useVideosContext } from "../../Contexts/VideosContext";
 
 export const Signup = () => {
@@ -117,8 +117,12 @@ export const Signup = () => {
             </span>
           </div>
 
-          <Button variant="contained" onClick={registerHandler}>
-            { loader ? "Registering..." : "Register"}
+          <Button disabled={loader} variant="contained" onClick={registerHandler}>
+          {loader ? (
+              <CircularProgress size={25} color="secondary" />
+            ) : (
+              "Register"
+            )}
           </Button>
 
           <div className="already-registered">

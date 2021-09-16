@@ -6,7 +6,7 @@ import { deletePlaylist } from "../../api/Playlist/deletePlaylist";
 import { thumbnail } from "../../utils/thumbnail";
 
 export const PlaylistCard = ({ item }) => {
-  const { playlist, dispatchPlaylist } = usePlaylist();
+  const { dispatchPlaylist } = usePlaylist();
   const { token } = useAuth(); 
   
   const playlistThumbnail = (playlist) => {

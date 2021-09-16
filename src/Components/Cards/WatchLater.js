@@ -1,10 +1,8 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { thumbnail } from "../../utils/thumbnail";
 import "./Cards.style.css";
 import { useWatchlistContext } from "../../Contexts/WatchlistContext";
-import DeleteIcon from "@material-ui/icons/Delete";
-import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
+import {PlayCircleFilledWhite, Delete} from "@material-ui/icons";
 import { removeWatchlist } from "../../api/Watchlist/removeWatchlist";
 import { useAuth } from "../../Contexts/AuthContext";
 
@@ -21,7 +19,7 @@ export function WatchLater({ watchlaterData }) {
           className="delete-icon"
           onClick={() => removeWatchlist(videoID, dispatchWatchlist, token)}
         >
-          <DeleteIcon className="delete-icon-bin" />
+          <Delete className="delete-icon-bin" />
         </span>
         <div className="videos-title">
           <p> {name} </p>
@@ -33,7 +31,7 @@ export function WatchLater({ watchlaterData }) {
           </p>
           <div className="play-btn-div">
             <Link to={`/${videoID}`} className="play-btn">
-              Play now <PlayCircleFilledWhiteIcon />
+              Play now <PlayCircleFilledWhite />
             </Link>
           </div>
         </div>
